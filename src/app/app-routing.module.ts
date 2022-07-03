@@ -7,9 +7,11 @@ import { IndexComponent } from "./pages/index/index.component";
 import { ProfilepageComponent } from "./pages/examples/profilepage/profilepage.component";
 import { RegisterpageComponent } from "./pages/examples/registerpage/registerpage.component";
 import { LandingpageComponent } from "./pages/examples/landingpage/landingpage.component";
+import { LearnByTypingComponent } from "./pages/learn-by-typing/learn-by-typing.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "home", pathMatch: "full" },
+  { path: "learn-by-typing", component: LearnByTypingComponent },
   { path: "home", component: IndexComponent },
   { path: "profile", component: ProfilepageComponent },
   { path: "register", component: RegisterpageComponent },

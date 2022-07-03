@@ -1,25 +1,25 @@
-import {
-  Component,
-  OnInit,
-  Renderer2,
-  HostListener,
-  Inject
-} from "@angular/core";
+import { Component,  OnInit,  Renderer2,  HostListener,  Inject,  OnDestroy } from "@angular/core";
 import { Location } from "@angular/common";
 import { DOCUMENT } from "@angular/common";
 
+/**
+ * Contains a bunch of UI Kit Initalization logic.
+ */
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.scss"]
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
+
   constructor(
     private renderer: Renderer2,
     public location: Location,
     @Inject(DOCUMENT) document
   ) {}
+
   @HostListener("window:scroll", ["$event"])
+
   onWindowScroll(e) {
     if (window.pageYOffset > 100) {
       var element = document.getElementById("navbar-top");
@@ -35,7 +35,16 @@ export class AppComponent implements OnInit {
       }
     }
   }
+
   ngOnInit() {
     this.onWindowScroll(event);
+    var body = document.getElementsByTagName("body")[0];
+    body.classList.add("index-page");
   }
+
+  ngOnDestroy() {
+    var body = document.getElementsByTagName("body")[0];
+    body.classList.remove("index-page");
+  }
+
 }

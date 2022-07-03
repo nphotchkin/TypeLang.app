@@ -22,6 +22,7 @@ import { ProfilepageComponent } from "./examples/profilepage/profilepage.compone
 import { RegisterpageComponent } from "./examples/registerpage/registerpage.component";
 import { LandingpageComponent } from "./examples/landingpage/landingpage.component";
 import { SharedModule } from "../shared/shared.module";
+import { LearnByTypingComponent } from './learn-by-typing/learn-by-typing.component';
 
 @NgModule({
   imports: [
@@ -47,7 +48,8 @@ import { SharedModule } from "../shared/shared.module";
     IndexComponent,
     ProfilepageComponent,
     RegisterpageComponent,
-    LandingpageComponent
+    LandingpageComponent,
+    LearnByTypingComponent
   ],
   exports: [
     IndexComponent,
