@@ -6,11 +6,16 @@
 <img align="left" alt="Angular" width="26px" src="https://user-images.githubusercontent.com/15834648/177036391-a94a5df2-bae6-4b3a-b769-82e9b6150020.png" />
 <img align="left" alt="Firebase" width="26px" src="https://user-images.githubusercontent.com/15834648/177036444-eb21d65c-ceb3-49ce-85c3-41ff9f1df5c2.png" />
 
-<br />
-
-# About
+<br/>
+<br/>
 
 TypeLang is a straight forward language learning app for Typist's - Open Source & Always Free
+
+<img src="https://user-images.githubusercontent.com/15834648/175621591-2b585172-99a2-4c36-9dd6-3eb1cee8e815.png" 
+ alt="banner" 
+ width="200"/>
+ 
+<br/> 
 
 # Want to Contribute?
 
