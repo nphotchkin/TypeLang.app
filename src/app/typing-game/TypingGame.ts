@@ -32,12 +32,12 @@ export class TypingGame {
 
     initalize() {
         this.wordsToType.forEach(word => {
-        var currentWord = word[0];
-        var correctnessArray = [];
-        for (var i = 0; i <currentWord.length; i++) {
-            correctnessArray.push(LetterCorrectness[LetterCorrectness.NOT_TYPED]);
-        }
-        word[1] = correctnessArray;
+            var currentWord = word[0];
+            var correctnessArray = [];
+            for (var i = 0; i <currentWord.length; i++) {
+                correctnessArray.push(LetterCorrectness[LetterCorrectness.NOT_TYPED]);
+            }
+            word[1] = correctnessArray;
         });
     }
 
@@ -72,13 +72,13 @@ export class TypingGame {
 
         var index = 0;
         currentWord.split('').forEach(letterInCurrentWord => {
-        var inputLetterForCurrentIndex = input.split('')[index];
-        if (inputLetterForCurrentIndex == letterInCurrentWord) {
-            letterCorrectnessArray[index] = LetterCorrectness[LetterCorrectness.CORRECT]
-        } else {
-            letterCorrectnessArray[index] = LetterCorrectness[LetterCorrectness.INCORRECT]
-        }
-        index ++;
+            var inputLetterForCurrentIndex = input.split('')[index];
+            if (inputLetterForCurrentIndex == letterInCurrentWord) {
+                letterCorrectnessArray[index] = LetterCorrectness[LetterCorrectness.CORRECT]
+            } else {
+                letterCorrectnessArray[index] = LetterCorrectness[LetterCorrectness.INCORRECT]
+            }
+            index ++;
         })
 
         this.wordsToType[this.currentWordIndex].pop();
@@ -89,7 +89,7 @@ export class TypingGame {
 
     onCorrectWordMoveToNext(letterCorrectnessArray) {
         let totalMissingOrInCorrect = letterCorrectnessArray.filter(entry => {
-        return entry == LetterCorrectness[LetterCorrectness.INCORRECT] || entry == LetterCorrectness[LetterCorrectness.NOT_TYPED];
+            return entry == LetterCorrectness[LetterCorrectness.INCORRECT] || entry == LetterCorrectness[LetterCorrectness.NOT_TYPED];
         }).length;
         if (totalMissingOrInCorrect == 0) {
             if (this.currentWordIndex < this.wordsToType.length) {

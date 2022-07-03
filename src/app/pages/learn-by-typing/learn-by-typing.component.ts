@@ -14,8 +14,7 @@ export class LearnByTypingComponent implements OnInit {
   typingGame: TypingGame = new TypingGame();
   gameIsRunning: boolean = false;
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   onLetterTyped(event: any) {
     if(!this.gameIsRunning) this.newGame();
@@ -46,8 +45,9 @@ export class LearnByTypingComponent implements OnInit {
 
   restart() {
     this.resetGame();
-    setTimeout(()=>{ // this will make the execution after the above boolean has changed
+    setTimeout(()=>{ 
       this.typingBox.nativeElement.focus();
     },0);
   }
+
 }
