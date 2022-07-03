@@ -3,11 +3,22 @@
   <div class="page-header header-filter">
     <div class="container">
       <div class="content-center brand">
-        <h1 class="h1-seo">Type Lang⌨️</h1>
-        <h3>
-          Learn Languages By Typing 
-        </h3>
-        <button class="btn btn-primary mr-1" type="button">Start Learning</button>
+        <div class="center">
+          
+          <h1>Spanish: {{ typingGame.currentWordTranslation }} </h1>
+          <h1>Current Word: {{ typingGame.currentWord}} </h1>
+          <h2>All Words: {{ typingGame.allWords}}</h2>
+          <h5>Words to Type: {{ typingGame.wordsToTypeArray | json }}</h5>
+          <h1>
+            <span class="half-size">{{countDownTimer.timeLeft}}</span>
+          </h1>
+          <form>
+            <div class="form-group">
+              <input  #typingbox type="text" id="gameInput" (keyup)="onLetterTyped($event)" class="form-control" placeholder="Type to Play" >
+            </div>
+            <button (click)="restart()" class="btn btn-primary" type="button">Restart</button>
+          </form>
+        </div>
       </div>
     </div>
   </div>
