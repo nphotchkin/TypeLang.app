@@ -1,5 +1,5 @@
 import { BrowserModule } from "@angular/platform-browser";
-import { NgModule } from "@angular/core";
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
@@ -21,6 +21,7 @@ import { IndexComponent } from "./index/index.component";
 import { ProfilepageComponent } from "./examples/profilepage/profilepage.component";
 import { RegisterpageComponent } from "./examples/registerpage/registerpage.component";
 import { LandingpageComponent } from "./examples/landingpage/landingpage.component";
+import { SharedModule } from "../shared/shared.module";
 
 @NgModule({
   imports: [
@@ -39,7 +40,8 @@ import { LandingpageComponent } from "./examples/landingpage/landingpage.compone
     AlertModule.forRoot(),
     BsDatepickerModule.forRoot(),
     CarouselModule.forRoot(),
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    SharedModule
   ],
   declarations: [
     IndexComponent,
@@ -53,6 +55,7 @@ import { LandingpageComponent } from "./examples/landingpage/landingpage.compone
     RegisterpageComponent,
     LandingpageComponent
   ],
-  providers: []
+  providers: [],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class PagesModule {}
