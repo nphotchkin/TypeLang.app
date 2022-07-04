@@ -20,15 +20,7 @@ export class LearnByTypingComponent implements OnInit {
     if(!this.gameIsRunning) this.newGame();
     var currentWord = this.typingGame.currentWord;
     var wordCorrect = this.typingGame.checkWord(event.target.value);
-    if (wordCorrect) {
-      var audio = new Audio(`assets/typing-game/language-files/sound-clips/spanish/${currentWord}.mp3`);
-      audio.play();
-      audio.onended = function() {
-        if (wordCorrect) {
-          event.target.value = "";
-        }
-      }
-    }
+    if (wordCorrect) this.onCorrectWord(event, currentWord);
   }
 
   resetGame() {
@@ -47,6 +39,14 @@ export class LearnByTypingComponent implements OnInit {
     setTimeout(()=>{ 
       this.typingBox.nativeElement.focus();
     },0);
+  }
+
+  private onCorrectWord(event: any, currentWord: string) {
+    var audio = new Audio(`assets/typing-game/language-files/sound-clips/spanish/${currentWord}.mp3`);
+    audio.play();
+    audio.onended = function() {
+        event.target.value = "";      
+    }
   }
 
 }
