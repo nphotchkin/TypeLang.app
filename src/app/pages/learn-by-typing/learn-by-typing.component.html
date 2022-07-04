@@ -4,30 +4,37 @@
     <div class="container">
       <div class="content-center brand">
         <div class="center">
-          <h1>
-            <img src="https://flagcdn.com/24x18/es.png" srcset="https://flagcdn.com/48x36/es.png 2x,
-            https://flagcdn.com/72x54/es.png 3x" width="24" height="18" alt="Spain">
-            {{ typingGame.currentWordTranslation }}
-          </h1>
-          <h1><img src="https://flagcdn.com/24x18/gb-eng.png" srcset="https://flagcdn.com/48x36/gb-eng.png 2x,
-              https://flagcdn.com/72x54/gb-eng.png 3x" width="24" height="18" alt="England">
-            {{ typingGame.currentWord}} 
-          </h1>
+
           <!-- <h2>All Words: {{ typingGame.allWords}}</h2> -->
           <!-- <h5>Words to Type: {{ typingGame.wordsToTypeArray | json }}</h5> -->
           <h1 class="float-right">
             <span class="half-size">{{countDownTimer.timeLeft}}</span>
           </h1>
-          <form>
-            <div class="form-group">
-              <input #typingbox type="text" id="gameInput" (keyup)="onLetterTyped($event)" class="form-control"
-                placeholder="Type to Play">
+          <div class="card card-register">
+            <div class="card-body m-4">
+              <h1>
+                <img src="https://flagcdn.com/24x18/es.png" srcset="https://flagcdn.com/48x36/es.png 2x,
+                  https://flagcdn.com/72x54/es.png 3x" width="24" height="18" alt="Spain">
+                {{ typingGame.currentWordTranslation }}
+              </h1>
+              <h1><img src="https://flagcdn.com/24x18/gb-eng.png" srcset="https://flagcdn.com/48x36/gb-eng.png 2x,
+                    https://flagcdn.com/72x54/gb-eng.png 3x" width="24" height="18" alt="England">
+                {{ typingGame.currentWord}}
+              </h1>
+              <form>
+                <div class="form-group">
+                  <input #typingbox type="text" id="gameInput" (keyup)="onLetterTyped($event)" class="form-control"
+                    placeholder="Type to Play">
+                </div>
+                <div class="d-flex justify-content-center">
+                  <button (click)="restart()" placement="bottom" tooltip="Restart Test" style="color:white"
+                  class="btn btn-primary" type="button">
+                  <i class="fa-solid fa-rotate-left"></i>
+                </button>
+                </div>
+              </form>
             </div>
-            <button (click)="restart()" placement="bottom" tooltip="Restart Test" style="color:white"
-              class="btn btn-primary" type="button">
-              <i class="fa-solid fa-rotate-left"></i>
-            </button>
-          </form>
+          </div>
         </div>
       </div>
     </div>
