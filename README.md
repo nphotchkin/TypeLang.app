@@ -31,3 +31,10 @@ Before contributing to this repository, please read the [code of conduct](./CODE
 
 # Developers 
 [UI Kit Docs](https://demos.creative-tim.com/blk-design-system-angular/#/documentation/grid)
+
+
+
+# TODO: 
+- Check these out:
+ - https://www.sitepoint.com/syncing-css-animations-with-html5-audio/
+ - https://github.com/chrvadala/music-beat-detector
