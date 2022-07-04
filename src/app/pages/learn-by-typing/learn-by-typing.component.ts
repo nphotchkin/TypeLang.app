@@ -18,7 +18,6 @@ export class LearnByTypingComponent implements OnInit {
 
   onLetterTyped(event: any) {
     if(!this.gameIsRunning) this.newGame();
-
     var currentWord = this.typingGame.currentWord;
     var wordCorrect = this.typingGame.checkWord(event.target.value);
     if (wordCorrect) {
