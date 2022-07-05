@@ -1,4 +1,5 @@
 # TypeLang.app
+![image](https://user-images.githubusercontent.com/15834648/177362062-6dfdd17d-677f-4d78-90c3-094740edd91d.png)
 
 <img align="left" alt="TypeScript" width="26px" src="https://iconape.com/wp-content/png_logo_vector/typescript.png" />
 <img align="left" alt="Sass" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/sass/sass.png" />
