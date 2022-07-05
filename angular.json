@@ -106,6 +106,16 @@
               "src/assets"
             ]
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "blk-design-system-angular:build:production",
+            "firebaseProject": "typelang-app",
+            "firebaseHostingSite": "typelang-app"
+          }
         }
       }
     },

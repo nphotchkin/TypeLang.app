@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "typelang-app": {
+      "hosting": {
+        "blk-design-system-angular": [
+          "typelang-app"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "typelang-app"
+  }
+}
