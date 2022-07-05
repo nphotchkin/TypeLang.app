@@ -38,9 +38,9 @@
                     https://flagcdn.com/72x54/gb-eng.png 3x" width="24" height="18" alt="England">
                 {{ typingGame.currentWord}}
               </h1>
-              <form>
+              <form autocomplete="off">
                 <div class="form-group">
-                  <input #typingbox type="text" id="gameInput" (keyup)="onLetterTyped($event)" class="form-control"
+                  <input #typingbox type="text" id="gameInput" (keyup)="onLetterTyped($event)" class="form-control" autocomplete="false" name="hidden" type="text"
                     placeholder="Type to Play">
                 </div>
                 <div class="d-flex justify-content-center">
