@@ -50,7 +50,7 @@ export class TypingGame {
     }
 
     get currentWord() {
-        return this.wordsToType[this.currentWordIndex][0];
+        return this.wordsToType[this.currentWordIndex][0].toString();
     }
 
     get allWords() {
