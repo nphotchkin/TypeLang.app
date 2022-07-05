@@ -7,8 +7,32 @@ enum LetterCorrectness {
 export class TypingGame {
 
     private translations = [
-        'prueba', 'país', 'nombre', 'el / la', 'ser',
-        'de', 'y', 'uno / una', 'a', 'en'
+        'prueba', 
+        'país', 
+        'nombre', 
+        'el / la', 
+        'ser',
+        'de', 
+        'y', 
+        'uno / una', 
+        'a', 
+        'en', 
+        'su', 
+        'ellos', 
+        'a',
+        'uno', 
+        'tener', 
+        'esto', 
+        'de', 
+        'o', 
+        'tenido', 
+        'por',
+        'no', 
+        'palabra', 
+        'pero', 
+        'qué', 
+        'alguno', 
+        'nosotros'
     ];
 
     private currentWordIndex = 0;
@@ -23,7 +47,23 @@ export class TypingGame {
         ["and",[]],
         ["a",[]],
         ["to",[]],
-        ["in",[]]
+        ["in",[]],
+        ["his",[]],
+        ["they",[]],
+        ["at",[]],
+        ["one",[]],
+        ["have",[]],
+        ["this",[]],
+        ["from",[]],
+        ["or",[]],
+        ["had",[]],
+        ["by",[]],
+        ["not",[]],
+        ["word",[]],
+        ["but",[]],
+        ["what",[]],
+        ["some",[]],
+        ["we",[]]
     ];
 
     constructor() {
