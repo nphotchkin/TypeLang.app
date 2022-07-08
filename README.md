@@ -28,6 +28,14 @@ Before contributing to this repository, please read the [code of conduct](./CODE
 
 # Support
 
+
+# Notes
+
+There appears to be two types of learning `games` drilling words the main aim of this. Then there is scenario based (grammar etc) this is difficult to generalize as it varies by language. 
+
+ - How do you Male / Female for spanish?
+ - Do other languages have a similar sort of construct?
+
 ..
 
 # Developers 
