@@ -1,0 +1,19 @@
+{
+    "sourceCountryCode": "GB", 
+    "targetCountryCode": "ES", 
+    "scenarioName": "top-20-words",
+    "words": [
+        {  
+            "wordInSourceCountryLanguage": "test", 
+            "wordInTargetCountryLanguage": "prueba", 
+            "wordInEnglish" : "test", 
+            "voiceClipPlayBackLength": 10
+        },
+        {  
+            "wordInSourceCountryLanguage": "country", 
+            "wordInTargetCountryLanguage": "país", 
+            "wordInEnglish" : "country", 
+            "voiceClipPlayBackLength": 10
+        }
+    ]
+}

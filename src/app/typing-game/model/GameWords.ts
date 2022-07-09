@@ -1,5 +1,3 @@
-
-
 export class GameWords {
 
     sourceCountryCode: string;
@@ -46,19 +44,9 @@ export class WordTranslation {
         this.wordInTargetCountryLanguage = wordInTargetCountryLanguage;
         this.wordInEnglish = wordInEnglish;
         this.voiceClipPlayBackLength = voiceClipPlayBackLength;
-        this.initalizeCorrectnessArray();
-    }
-
-    private initalizeCorrectnessArray() {
-        var correctnessArray = [];
-        for (var i = 0; i < this.wordInSourceCountryLanguage.length; i++) {
-            correctnessArray.push(LetterCorrectness[LetterCorrectness.NOT_TYPED]);
-        }
-        this.correctLettersForWord = correctnessArray;
     }
 
 }
-
 
 export enum LetterCorrectness {
     "CORRECT",

@@ -1,8 +1,11 @@
+import { TranslationFileResolver } from "../shared/util/TranslationFileResolver";
 import { GameWords, WordTranslation, LetterCorrectness } from "./model/GameWords";
 
 export class TypingGame {
 
-    gameWords: GameWords
+    gameInitialized: boolean = false;
+
+    gameWords: GameWords;
 
     private currentWordIndex = 0
 
@@ -11,12 +14,22 @@ export class TypingGame {
     }
 
     initalize() {
-        this.initNewGameFormat();
-        console.warn(this.gameWords)
+        TranslationFileResolver.resolve(`top-20-words`).then(gameWords => {
+            this.gameWords = gameWords;
+            this.gameInitialized = true;
+        })
     }
 
     get currentWordTranslation(): WordTranslation {
         return this.gameWords.words[this.currentWordIndex]
+    }
+
+    initalizeCorrectnessArray(word: WordTranslation) {
+        var correctnessArray = [];
+        for (var i = 0; i < word.wordInSourceCountryLanguage.length; i++) {
+            correctnessArray.push(LetterCorrectness[LetterCorrectness.NOT_TYPED]);
+        }
+        word.correctLettersForWord = correctnessArray;
     }
 
     /**
@@ -24,26 +37,8 @@ export class TypingGame {
      * the correct letters in the current word.
      */
     checkWord(input: string): boolean {
-
-        var currentWord = this.currentWordTranslation;
-
-        var index = 0;
-
-        currentWord.wordInSourceCountryLanguage.split('').forEach(letterInCurrentWord => {
-
-            var inputLetterForCurrentIndex = input.split('')[index];
-
-            if (inputLetterForCurrentIndex == letterInCurrentWord) {
-                currentWord.correctLettersForWord[index] = LetterCorrectness[LetterCorrectness.CORRECT]
-            } else {
-                currentWord.correctLettersForWord[index] = LetterCorrectness[LetterCorrectness.INCORRECT]
-            }
-            index ++;
-
-        })
-
-
-        return this.onCorrectWordMoveToNext(currentWord.correctLettersForWord)
+        this.updateLetterCorrectnessForCurrentWordGiven(input);
+        return this.onCorrectWordMoveToNext(this.currentWordTranslation.correctLettersForWord)
     }
 
     onCorrectWordMoveToNext(letterCorrectnessArray) {
@@ -59,26 +54,21 @@ export class TypingGame {
         return false
     }
 
+    private updateLetterCorrectnessForCurrentWordGiven(input: string) {
+        var index = 0;
+        var currentWord = this.currentWordTranslation;
 
-    initNewGameFormat() {
-        
-        var wordTranslations = []
-
-        var translation = new WordTranslation(
-            "test", "prueba", "test", 10
-        )
-        var translation2 = new WordTranslation(
-            "country", "país", "country", 10
-        )
-        wordTranslations.push(translation2)
-        wordTranslations.push(translation)
-        var words = new GameWords(
-            "GB",
-            "ES",
-            "top-200-words",
-            wordTranslations
-        )
-        this.gameWords = words
+        currentWord.wordInSourceCountryLanguage.split('').forEach(letterInCurrentWord => {
+            var inputLetterForCurrentIndex = input.split('')[index];
+            if (inputLetterForCurrentIndex == letterInCurrentWord) {
+                currentWord.correctLettersForWord[index] = LetterCorrectness[LetterCorrectness.CORRECT]
+            } else {
+                currentWord.correctLettersForWord[index] = LetterCorrectness[LetterCorrectness.INCORRECT]
+            }
+            index ++;
+        })
     }
 
 }
+
+ 
