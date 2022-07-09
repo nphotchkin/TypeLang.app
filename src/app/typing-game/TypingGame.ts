@@ -1,104 +1,22 @@
-enum LetterCorrectness {
-    "CORRECT",
-    "INCORRECT",
-    "NOT_TYPED"
-}
-    
+import { GameWords, WordTranslation, LetterCorrectness } from "./model/GameWords";
+
 export class TypingGame {
 
-    private translations = [
-        'prueba', 
-        'país', 
-        'nombre', 
-        'el / la', 
-        'ser',
-        'de', 
-        'y', 
-        'uno / una', 
-        'a', 
-        'en', 
-        'su', 
-        'ellos', 
-        'a',
-        'uno', 
-        'tener', 
-        'esto', 
-        'de', 
-        'o', 
-        'tenido', 
-        'por',
-        'no', 
-        'palabra', 
-        'pero', 
-        'qué', 
-        'alguno', 
-        'nosotros'
-    ];
+    gameWords: GameWords
 
-    private currentWordIndex = 0;
-
-    private wordsToType = [
-        ['test', []],
-        ['country', []],
-        ['name', []],
-        ["the", []],
-        ["be",[]],
-        ["of",[]],
-        ["and",[]],
-        ["a",[]],
-        ["to",[]],
-        ["in",[]],
-        ["his",[]],
-        ["they",[]],
-        ["at",[]],
-        ["one",[]],
-        ["have",[]],
-        ["this",[]],
-        ["from",[]],
-        ["or",[]],
-        ["had",[]],
-        ["by",[]],
-        ["not",[]],
-        ["word",[]],
-        ["but",[]],
-        ["what",[]],
-        ["some",[]],
-        ["we",[]]
-    ];
+    private currentWordIndex = 0
 
     constructor() {
-        this.initalize();
+        this.initalize()
     }
 
     initalize() {
-        this.wordsToType.forEach(word => {
-            var currentWord = word[0];
-            var correctnessArray = [];
-            for (var i = 0; i <currentWord.length; i++) {
-                correctnessArray.push(LetterCorrectness[LetterCorrectness.NOT_TYPED]);
-            }
-            word[1] = correctnessArray;
-        });
+        this.initNewGameFormat();
+        console.warn(this.gameWords)
     }
 
-    get wordsToTypeArray() {
-        return this.wordsToType;
-    }
-
-    get currentWordTranslation() {
-        return this.translations[this.currentWordIndex];
-    }
-
-    get currentWord() {
-        return this.wordsToType[this.currentWordIndex][0].toString();
-    }
-
-    get allWords() {
-        var words = "";
-        this.wordsToType.map(function(val, index){
-            words = words + " " + val[0];
-        })
-        return words;
+    get currentWordTranslation(): WordTranslation {
+        return this.gameWords.words[this.currentWordIndex]
     }
 
     /**
@@ -106,38 +24,61 @@ export class TypingGame {
      * the correct letters in the current word.
      */
     checkWord(input: string): boolean {
-        var currentWordWithCorrectness = this.wordsToType[this.currentWordIndex];
-        var currentWord: string = currentWordWithCorrectness[0].toString();
-        var letterCorrectnessArray = new Array(currentWordWithCorrectness[1]);
+
+        var currentWord = this.currentWordTranslation;
 
         var index = 0;
-        currentWord.split('').forEach(letterInCurrentWord => {
+
+        currentWord.wordInSourceCountryLanguage.split('').forEach(letterInCurrentWord => {
+
             var inputLetterForCurrentIndex = input.split('')[index];
+
             if (inputLetterForCurrentIndex == letterInCurrentWord) {
-                letterCorrectnessArray[index] = LetterCorrectness[LetterCorrectness.CORRECT]
+                currentWord.correctLettersForWord[index] = LetterCorrectness[LetterCorrectness.CORRECT]
             } else {
-                letterCorrectnessArray[index] = LetterCorrectness[LetterCorrectness.INCORRECT]
+                currentWord.correctLettersForWord[index] = LetterCorrectness[LetterCorrectness.INCORRECT]
             }
             index ++;
+
         })
 
-        this.wordsToType[this.currentWordIndex].pop();
-        this.wordsToType[this.currentWordIndex].push(letterCorrectnessArray);
 
-        return this.onCorrectWordMoveToNext(letterCorrectnessArray)
+        return this.onCorrectWordMoveToNext(currentWord.correctLettersForWord)
     }
 
     onCorrectWordMoveToNext(letterCorrectnessArray) {
         let totalMissingOrInCorrect = letterCorrectnessArray.filter(entry => {
             return entry == LetterCorrectness[LetterCorrectness.INCORRECT] || entry == LetterCorrectness[LetterCorrectness.NOT_TYPED];
-        }).length;
+        }).length
         if (totalMissingOrInCorrect == 0) {
-            if (this.currentWordIndex < this.wordsToType.length) {
-            this.currentWordIndex ++;
-            return true;
+            if (this.currentWordIndex < this.gameWords.words.length) {
+                this.currentWordIndex ++
+                return true
             }
         }
-        return false;
+        return false
+    }
+
+
+    initNewGameFormat() {
+        
+        var wordTranslations = []
+
+        var translation = new WordTranslation(
+            "test", "prueba", "test", 10
+        )
+        var translation2 = new WordTranslation(
+            "country", "país", "country", 10
+        )
+        wordTranslations.push(translation2)
+        wordTranslations.push(translation)
+        var words = new GameWords(
+            "GB",
+            "ES",
+            "top-200-words",
+            wordTranslations
+        )
+        this.gameWords = words
     }
 
 }

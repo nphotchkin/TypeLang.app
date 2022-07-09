@@ -18,9 +18,9 @@ export class LearnByTypingComponent implements OnInit {
 
   onLetterTyped(event: any) {
     if(!this.gameIsRunning) this.newGame();
-    var currentWord = this.typingGame.currentWord;
+    var currentWordBeforeChecking = this.typingGame.currentWordTranslation;
     var wordCorrect = this.typingGame.checkWord(event.target.value);
-    if (wordCorrect) this.onCorrectWord(event, currentWord);
+    if (wordCorrect) this.onCorrectWord(event, currentWordBeforeChecking.wordInEnglish);
   }
 
   resetGame() {
@@ -42,7 +42,6 @@ export class LearnByTypingComponent implements OnInit {
   }
 
   private onCorrectWord(event: any, currentWord: string) {
-  
     var audio = new Audio(`assets/typing-game/language-files/sound-clips/spanish/${currentWord}.mp3`);
     audio.play();
     audio.onended = function() {
