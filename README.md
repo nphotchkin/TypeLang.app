@@ -55,6 +55,13 @@ Call these `Sets` Language packs with chest unlocks and confetti, a player can o
  
 It's all a bit wonky, you could capture the number of times someone revises a completed set after you said they must have learnt it for ERR.
 
+Weekly you get assigned previously completed language packs to demonstrate you have learnt, this is a repetition of the recall / multiple choice game against said pack. Failure to complete again has hearts and requires you to recall through multiple choice / typing blind. After completion of this one time event you get a star against that language pack (kind of like an additional rank, at X number of stars that language pack is said to be 100% complete and will not be chosen again at random).
+ - This allows the system to include the repeated exposure accross multiple sessions concept.
+ 
+Every player has a rank, ranks are a delinated by an abitrary number of fully ranked language packs (words said to have been learnt through this process). 
+ - Determine ranks and names per number of words
+ - Add some call of duty like logos for these ranks.
+
 ..
 
 # Developers 
