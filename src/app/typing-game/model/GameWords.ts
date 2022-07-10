@@ -1,3 +1,7 @@
+/**
+ * This represents the output of language file generation. 
+ *  - Build to this model first for English to Spanish MVP then thing about how to adapt it.
+ */
 export class GameWords {
 
     sourceCountryCode: string;

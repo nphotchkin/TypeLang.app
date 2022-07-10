@@ -42,10 +42,14 @@ export class LearnByTypingComponent implements OnInit {
   }
 
   private onCorrectWord(event: any, currentWord: string) {
+    event.target.style.color = "#90ee90";
+    event.target.style.fontWeight = "bold";
     var audio = new Audio(`assets/typing-game/language-files/sound-clips/spanish/${currentWord}.mp3`);
     audio.play();
     audio.onended = function() {
-        event.target.value = "";      
+        event.target.value = "";  
+        event.target.style.color = "white";
+        event.target.style.fontWeight = "normal";    
     }
   }
 

@@ -14,7 +14,7 @@ export class TypingGame {
     }
 
     initalize() {
-        TranslationFileResolver.resolve(`top-20-words`).then(gameWords => {
+        TranslationFileResolver.resolve(`top-200-words`).then(gameWords => {
             this.gameWords = gameWords;
             this.gameInitialized = true;
         })
