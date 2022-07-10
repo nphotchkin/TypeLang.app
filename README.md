@@ -51,6 +51,8 @@ to test your knowledge of the set using (hide and show / given primary language 
  - To gain more confidence the word has been learned beyond simply exposures, you could capture stats around number of consecutive correct recalls.
  - AFTER number of consecutive recalls has been reached ad this set of words to the users profile as words they have truely learnt.
  
+Call these `Sets` Language packs with chest unlocks and confetti, a player can only have X number of active language packs at a time which must be completed before generating new `sets` in order to have completed a language pack you must succesfully recall through either multiple choice or typing the word in the target language from recall when performing the re-call based test you have X number of lifes which are lost for failure to recall. You must recharge your language pack meter in order to try to pass the test again by going back and playing the normal learn by typing mode.
+ 
 It's all a bit wonky, you could capture the number of times someone revises a completed set after you said they must have learnt it for ERR.
 
 ..
