@@ -31,10 +31,27 @@ Before contributing to this repository, please read the [code of conduct](./CODE
 
 # Notes
 
-There appears to be two types of learning `games` drilling words the main aim of this. Then there is scenario based (grammar etc) this is difficult to generalize as it varies by language. 
+There appears to be two types of learning `games` drilling words is the main aim of this. Then there is scenario based (grammar etc.) this is difficult to generalize as it varies by language. 
 
- - How do you Male / Female for spanish?
- - Do other languages have a similar sort of construct?
+Preference is to create games around learning the lexicon, it's down to the Individual to apply that knowledge in context through repeated exposure in the real world. There are a lot of factors involved in determining whether something has been committed to long term memory, the research suggests that this problem is intractable.
+
+Small sets of new words (as many as the number of things they say you can fit in your head)
+ - Backed by some research not entirely scientific, though:
+   - 10 exposures, you most likely recognize the word.
+   - 17 exposures, you most likely have learned the word.
+   - Repeated exposure between sessions re-enforces and another `confidence` measure.
+
+Could create an algorithm that assigns you a `Set` per `Duration` which remains static, that set should have some stats captured around
+number of exposures and exposures between sessions. 
+
+When some arbitrary number of exposures has been reached & arbitrary number of sessions, assume that word set has been learned.
+
+Even better would be once you have completed a set where you have reached MAGIC NUMBER of sessions & exposures unlock ability
+to test your knowledge of the set using (hide and show / given primary language type, the target).
+ - To gain more confidence the word has been learned beyond simply exposures, you could capture stats around number of consecutive correct recalls.
+ - AFTER number of consecutive recalls has been reached ad this set of words to the users profile as words they have truely learnt.
+ 
+It's all a bit wonky, you could capture the number of times someone revises a completed set after you said they must have learnt it for ERR.
 
 ..
 
