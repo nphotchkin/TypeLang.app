@@ -3,10 +3,8 @@ import { GameWords, WordTranslation, LetterCorrectness } from "./model/GameWords
 
 export class TypingGame {
 
-    gameInitialized: boolean = false;
-
-    gameWords: GameWords;
-
+    gameInitialized: boolean = false
+    gameWords: GameWords
     private currentWordIndex = 0
 
     constructor() {
@@ -15,21 +13,13 @@ export class TypingGame {
 
     initalize() {
         TranslationFileResolver.resolve(`top-200-words`).then(gameWords => {
-            this.gameWords = gameWords;
-            this.gameInitialized = true;
+            this.gameWords = gameWords
+            this.gameInitialized = true
         })
     }
 
     get currentWordTranslation(): WordTranslation {
         return this.gameWords.words[this.currentWordIndex]
-    }
-
-    initalizeCorrectnessArray(word: WordTranslation) {
-        var correctnessArray = [];
-        for (var i = 0; i < word.wordInSourceCountryLanguage.length; i++) {
-            correctnessArray.push(LetterCorrectness[LetterCorrectness.NOT_TYPED]);
-        }
-        word.correctLettersForWord = correctnessArray;
     }
 
     /**
@@ -43,7 +33,7 @@ export class TypingGame {
 
     onCorrectWordMoveToNext(letterCorrectnessArray) {
         let totalMissingOrInCorrect = letterCorrectnessArray.filter(entry => {
-            return entry == LetterCorrectness[LetterCorrectness.INCORRECT] || entry == LetterCorrectness[LetterCorrectness.NOT_TYPED];
+            return entry == LetterCorrectness[LetterCorrectness.INCORRECT] || entry == LetterCorrectness[LetterCorrectness.NOT_TYPED]
         }).length
         if (totalMissingOrInCorrect == 0) {
             if (this.currentWordIndex < this.gameWords.words.length) {
@@ -55,17 +45,17 @@ export class TypingGame {
     }
 
     private updateLetterCorrectnessForCurrentWordGiven(input: string) {
-        var index = 0;
-        var currentWord = this.currentWordTranslation;
+        var index = 0
+        var currentWord = this.currentWordTranslation
 
         currentWord.wordInSourceCountryLanguage.split('').forEach(letterInCurrentWord => {
-            var inputLetterForCurrentIndex = input.split('')[index];
+            var inputLetterForCurrentIndex = input.split('')[index]
             if (inputLetterForCurrentIndex == letterInCurrentWord) {
                 currentWord.correctLettersForWord[index] = LetterCorrectness[LetterCorrectness.CORRECT]
             } else {
                 currentWord.correctLettersForWord[index] = LetterCorrectness[LetterCorrectness.INCORRECT]
             }
-            index ++;
+            index ++
         })
     }
 
