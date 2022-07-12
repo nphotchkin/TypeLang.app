@@ -17,6 +17,7 @@ import { AlertModule } from 'ngx-bootstrap/alert';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { LearnByTypingSettingsModalComponent } from './components/modal/learn-by-typing-settings-modal/learn-by-typing-settings-modal.component';
 
 @NgModule({
   imports: [
@@ -39,7 +40,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
   ],
   declarations: [
     NavigationComponent,
-    FooterComponent
+    FooterComponent,
+    LearnByTypingSettingsModalComponent
   ],
   exports: [
     NavigationComponent,

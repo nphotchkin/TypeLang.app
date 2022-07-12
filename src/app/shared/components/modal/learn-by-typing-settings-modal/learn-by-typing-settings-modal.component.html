@@ -1,0 +1,23 @@
+    <div class="modal-content">
+      <div class="modal-header justify-content-center">
+        <button (click)="closeModal()"
+          aria-hidden="true"
+          class="close"
+          data-dismiss="modal"
+          type="button"
+        >
+          <i  class="tim-icons icon-simple-remove"> </i>
+        </button>
+        <h4 class="title title-up">Settings</h4>
+      </div>
+      <div class="modal-body">
+        {{ languagePack | json}}
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-default" type="button">Nice Button</button>
+        <button class="btn btn-danger" data-dismiss="modal" type="button">
+          Close
+        </button>
+      </div>
+    </div>
+

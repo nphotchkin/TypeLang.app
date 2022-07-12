@@ -1,8 +1,10 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { LanguagePackService } from 'src/app/shared/service/language-pack.service';
+import { ModalService } from 'src/app/shared/service/modal-launcher.service';
 import { LanguagePackResolver } from 'src/app/shared/util/TranslationFileResolver';
 import { CountDownTimer } from 'src/app/typing-game/CountDownTimer';
 import { CurrentGameWords, LetterCorrectness, WordTranslation } from 'src/app/typing-game/model/CurrentGameWords';
+import { LanuagePack } from 'src/app/typing-game/model/LanguagePack';
 import { TypingGame } from 'src/app/typing-game/TypingGame';
 
 @Component({
@@ -17,8 +19,13 @@ export class LearnByTypingComponent implements OnInit {
   typingGame: TypingGame
   gameIsRunning: boolean = false
   isGameInitialized: boolean = false
+
+  currentLanguagePack: LanuagePack;
   
-  constructor(private languagePackService: LanguagePackService) {}
+  constructor(
+    private languagePackService: LanguagePackService,
+    private modalService: ModalService
+  ) {}
 
   ngOnInit(): void {
     this.initalize()
@@ -28,7 +35,7 @@ export class LearnByTypingComponent implements OnInit {
     console.log(this.languagePackService.listLanguagePackNames())
 
     this.languagePackService.getLanguagePack('top-200-words', 'es').then(pack => {
-
+      this.currentLanguagePack = pack;
       this.languagePackService.getGameWordsGiven(pack, 0).then(wordsForGame=> {
         this.typingGame = new TypingGame(wordsForGame)
         this.isGameInitialized = true
@@ -60,6 +67,10 @@ export class LearnByTypingComponent implements OnInit {
     setTimeout(()=>{ 
       this.typingBox.nativeElement.focus()
     },0);
+  }
+
+  launchSettingsModal() {
+    this.modalService.launchLearnByTypingSettings(this.currentLanguagePack)
   }
 
   private onCorrectWord(event: any, currentWord: string) {

@@ -33,7 +33,8 @@ export class LanguagePackService {
       try{
         var wordTranslationsForFirstPack = languagePack.packs[packNumber].wordTranslations
         initializeWordCorrectnessForGame(wordTranslationsForFirstPack)
-          
+
+        
         var wordsForSelectedPackInLangagePack = new CurrentGameWords(
             languagePack.sourceCountryCode,
             languagePack.targetCountryCode,
