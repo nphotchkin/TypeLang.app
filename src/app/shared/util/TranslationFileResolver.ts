@@ -1,8 +1,8 @@
-import { GameWords, LetterCorrectness, WordTranslation } from "src/app/typing-game/model/GameWords";
+import { CurrentGameWords, LetterCorrectness, WordTranslation } from "src/app/typing-game/model/CurrentGameWords";
 
 export class TranslationFileResolver {
 
-    public static resolve(scenarioName: string): Promise<GameWords> {
+    public static resolve(scenarioName: string): Promise<CurrentGameWords> {
         return new Promise(function(resolve, reject){
             try {
                 var gameWords

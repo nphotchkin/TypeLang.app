@@ -1,10 +1,10 @@
 import { TranslationFileResolver } from "../shared/util/TranslationFileResolver";
-import { GameWords, WordTranslation, LetterCorrectness } from "./model/GameWords";
+import { CurrentGameWords, WordTranslation, LetterCorrectness } from "./model/CurrentGameWords";
 
 export class TypingGame {
 
     gameInitialized: boolean = false
-    gameWords: GameWords
+    gameWords: CurrentGameWords
     private currentWordIndex = 0
 
     constructor() {

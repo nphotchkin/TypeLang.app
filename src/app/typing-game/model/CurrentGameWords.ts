@@ -1,15 +1,11 @@
 /**
- * This represents the output of language file generation. 
- *  - Build to this model first for English to Spanish MVP then thing about how to adapt it.
+ * Words for an instance of a given game instanstiated given a selected langage pack -> pack number.
  */
-export class GameWords {
+export class CurrentGameWords {
 
     sourceCountryCode: string;
-
     targetCountryCode: string;
-
-    scenarioName: string;
-
+    languagePackName: string;
     words: WordTranslation[];
 
     constructor(
@@ -20,22 +16,18 @@ export class GameWords {
     ) {
         this.sourceCountryCode = sourceCountryCode;
         this.targetCountryCode = targetCountryCode;
-        this.scenarioName = scenarioName;
+        this.languagePackName = scenarioName;
         this.words = words;
     }
 
 }
 
-export class WordTranslation {
+export class WordTranslation { // TODO: move this model to its own file
 
     wordInSourceCountryLanguage: string;
-    
     wordInTargetCountryLanguage: string;
-
     wordInEnglish: string;
-
     voiceClipPlayBackLength: number;
-
     correctLettersForWord: string[]; // letter correctness
 
     constructor( 
