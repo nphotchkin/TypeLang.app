@@ -31,19 +31,9 @@ export class LanguagePackService {
   public getGameWordsGiven(languagePack: LanuagePack, packNumber: number): Promise<CurrentGameWords> {
     return new Promise(function(resolve, reject){
       try{
-        var wordTranslationsForFirstPack = languagePack.packs[0].wordTranslations
-        
-        // Typescript is broken :) you cant init variables via a private method through a constructor!
-        wordTranslationsForFirstPack.forEach(wordTranslation=> {
-
-            // Initalize the correctness array for the current word translateion
-            var correctnessArray = [];
-            for (var i = 0; i < wordTranslation.wordInSourceCountryLanguage.length; i++) {
-                correctnessArray.push(LetterCorrectness[LetterCorrectness.NOT_TYPED]);
-            }
-            wordTranslation.correctLettersForWord = correctnessArray
-        })
-        
+        var wordTranslationsForFirstPack = languagePack.packs[packNumber].wordTranslations
+        initializeWordCorrectnessForGame(wordTranslationsForFirstPack)
+          
         var wordsForSelectedPackInLangagePack = new CurrentGameWords(
             languagePack.sourceCountryCode,
             languagePack.targetCountryCode,
@@ -57,6 +47,22 @@ export class LanguagePackService {
         reject(error)
       }
     })
+
+
+    function initializeWordCorrectnessForGame(translations: WordTranslation[]) {
+        // Typescript is broken :) you cant init variables via a private method through a constructor!
+        translations.forEach(wordTranslation=> {
+
+          // Initalize the correctness array for the current word translateion
+          var correctnessArray = [];
+          for (var i = 0; i < wordTranslation.wordInSourceCountryLanguage.length; i++) {
+              correctnessArray.push(LetterCorrectness[LetterCorrectness.NOT_TYPED]);
+          }
+          wordTranslation.correctLettersForWord = correctnessArray
+        })
+    }
   }
+
+ 
 
 }
