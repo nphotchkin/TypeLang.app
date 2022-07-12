@@ -31,6 +31,8 @@ Before contributing to this repository, please read the [code of conduct](./CODE
 
 # Notes
 
+Pack size = 10 (I heard somewhere once that you can't fit more than 10 things in your head at once).
+
 There appears to be two types of learning `games` drilling words is the main aim of this. Then there is scenario based (grammar etc.) this is difficult to generalize as it varies by language. 
 
 Preference is to create games around learning the lexicon, it's down to the Individual to apply that knowledge in context through repeated exposure in the real world. There are a lot of factors involved in determining whether something has been committed to long term memory, the research suggests that this problem is intractable.
