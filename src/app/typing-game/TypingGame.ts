@@ -1,25 +1,20 @@
-import { TranslationFileResolver } from "../shared/util/TranslationFileResolver";
 import { CurrentGameWords, WordTranslation, LetterCorrectness } from "./model/CurrentGameWords";
 
 export class TypingGame {
 
-    gameInitialized: boolean = false
-    gameWords: CurrentGameWords
+    private gameWords: CurrentGameWords
     private currentWordIndex = 0
 
-    constructor() {
-        this.initalize()
-    }
-
-    initalize() {
-        TranslationFileResolver.resolve(`top-200-words`).then(gameWords => {
-            this.gameWords = gameWords
-            this.gameInitialized = true
-        })
+    constructor(gameWords: CurrentGameWords) {
+        this.gameWords = gameWords
     }
 
     get currentWordTranslation(): WordTranslation {
         return this.gameWords.words[this.currentWordIndex]
+    }
+
+    get wordsForExistingGame(): CurrentGameWords {
+        return this.gameWords;
     }
 
     /**

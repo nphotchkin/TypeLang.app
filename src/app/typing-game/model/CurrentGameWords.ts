@@ -15,10 +15,13 @@ export class CurrentGameWords {
         words: WordTranslation[]
     ) {
         this.sourceCountryCode = sourceCountryCode;
-        this.targetCountryCode = targetCountryCode;
         this.languagePackName = scenarioName;
-        this.words = words;
+        this.targetCountryCode = targetCountryCode;
+        this.words = words
     }
+
+
+
 
 }
 
@@ -34,13 +37,16 @@ export class WordTranslation { // TODO: move this model to its own file
         wordInSourceCountryLanguage: string,
         wordInTargetCountryLanguage: string,
         wordInEnglish: string,
-        voiceClipPlayBackLength: number
+        voiceClipPlayBackLength: number,
+        correctLettersForWord: string[]
     ) {
         this.wordInSourceCountryLanguage = wordInSourceCountryLanguage;
         this.wordInTargetCountryLanguage = wordInTargetCountryLanguage;
         this.wordInEnglish = wordInEnglish;
         this.voiceClipPlayBackLength = voiceClipPlayBackLength;
+        this.correctLettersForWord = correctLettersForWord
     }
+
 
 }
 
