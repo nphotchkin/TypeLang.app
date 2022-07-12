@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { LanguagePackService } from 'src/app/shared/service/language-pack.service';
 import { LanguagePackResolver } from 'src/app/shared/util/TranslationFileResolver';
 import { CountDownTimer } from 'src/app/typing-game/CountDownTimer';
 import { CurrentGameWords, LetterCorrectness, WordTranslation } from 'src/app/typing-game/model/CurrentGameWords';
@@ -16,38 +17,24 @@ export class LearnByTypingComponent implements OnInit {
   typingGame: TypingGame
   gameIsRunning: boolean = false
   isGameInitialized: boolean = false
+  
+  constructor(private languagePackService: LanguagePackService) {}
 
   ngOnInit(): void {
     this.initalize()
   }
 
   initalize() {
-    LanguagePackResolver.resolve('top-200-words', 'es').then(gameWords => {
-        var wordTranslationsForFirstPack = gameWords.packs[0].wordTranslations
-        
-        // Typescript is broken :) you cant init variables via a private method through a constructor!
-        wordTranslationsForFirstPack.forEach(wordTranslation=> {
-          this.initalizeCorrectnessArray(wordTranslation)
-        })
-        
-        var wordsForSelectedPackInLangagePack = new CurrentGameWords(
-            "gb",
-            "es",
-            "top-200-words",
-            wordTranslationsForFirstPack
-        )
-      
-        this.typingGame = new TypingGame(wordsForSelectedPackInLangagePack)
-        this.isGameInitialized = true
-    })
-  }
+    console.log(this.languagePackService.listLanguagePackNames())
 
-  private initalizeCorrectnessArray(word: WordTranslation) {
-    var correctnessArray = [];
-    for (var i = 0; i < word.wordInSourceCountryLanguage.length; i++) {
-        correctnessArray.push(LetterCorrectness[LetterCorrectness.NOT_TYPED]);
-    }
-    word.correctLettersForWord = correctnessArray
+    this.languagePackService.getLanguagePack('top-200-words', 'es').then(pack => {
+
+      this.languagePackService.getGameWordsGiven(pack, 0).then(wordsForGame=> {
+        this.typingGame = new TypingGame(wordsForGame)
+        this.isGameInitialized = true
+      })
+
+    })
   }
 
   onLetterTyped(event: any) {

@@ -20,9 +20,6 @@ export class CurrentGameWords {
         this.words = words
     }
 
-
-
-
 }
 
 export class WordTranslation { // TODO: move this model to its own file
