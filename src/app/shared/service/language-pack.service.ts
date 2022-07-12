@@ -45,9 +45,9 @@ export class LanguagePackService {
         })
         
         var wordsForSelectedPackInLangagePack = new CurrentGameWords(
-            "gb",
-            "es",
-            "top-200-words",
+            languagePack.sourceCountryCode,
+            languagePack.targetCountryCode,
+            languagePack.languagePackName,
             wordTranslationsForFirstPack
         )
 
