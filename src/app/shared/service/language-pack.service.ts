@@ -31,7 +31,7 @@ export class LanguagePackService {
   public getGameWordsGiven(languagePack: LanuagePack, packNumber: number): Promise<CurrentGameWords> {
     return new Promise(function(resolve, reject){
       try{
-        var wordTranslationsForFirstPack = languagePack.packs[packNumber].wordTranslations
+        var wordTranslationsForFirstPack = languagePack.packs[packNumber -1].wordTranslations
         initializeWordCorrectnessForGame(wordTranslationsForFirstPack)
 
         

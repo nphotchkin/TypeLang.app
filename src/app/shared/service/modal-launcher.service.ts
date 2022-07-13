@@ -16,7 +16,8 @@ export class ModalService {
     };
     return this.modalService.show(LearnByTypingSettingsModalComponent, 
       {
-        initialState : modalData
+        initialState : modalData,
+        class: 'modal-black modal-lg'
       }
     );
   }

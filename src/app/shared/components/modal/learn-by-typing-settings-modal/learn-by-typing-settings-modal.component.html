@@ -1,23 +1,39 @@
     <div class="modal-content">
-      <div class="modal-header justify-content-center">
-        <button (click)="closeModal()"
-          aria-hidden="true"
-          class="close"
-          data-dismiss="modal"
-          type="button"
-        >
-          <i  class="tim-icons icon-simple-remove"> </i>
+      <div class="modal-header">
+        <button (click)="closeModal()" aria-hidden="true" class="close" data-dismiss="modal" type="button">
+          <i class="tim-icons icon-simple-remove"> </i>
         </button>
         <h4 class="title title-up">Settings</h4>
       </div>
       <div class="modal-body">
-        {{ languagePack | json}}
+        <h4>Language Packs</h4>
+        <hr>
+        <table class="table" style="color: black">
+          <thead>
+            <tr>
+              <th>Pack Name</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{ languagePack.languagePackName }} </td>
+            </tr>
+          </tbody>
+        </table>
+        <fieldset>
+          <legend>
+            <h5>Select a Pack:</h5>
+          </legend>
+          <div *ngFor="let pack of languagePack.packs">
+            <input type="radio" name="packNumber" value="{{pack.packNumber}}" checked [(ngModel)]="selectedPack">
+            <label for="packNumber" class="ml-2">{{pack.packNumber}}</label>
+          </div>
+        </fieldset>
       </div>
       <div class="modal-footer">
-        <button class="btn btn-default" type="button">Nice Button</button>
-        <button class="btn btn-danger" data-dismiss="modal" type="button">
+        <button (click)="save()" class="btn btn-default" type="button">Save</button>
+        <button (click)="closeModal()" class="btn btn-danger" data-dismiss="modal" type="button">
           Close
         </button>
       </div>
     </div>
-
