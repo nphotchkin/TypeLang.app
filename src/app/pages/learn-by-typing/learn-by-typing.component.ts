@@ -24,7 +24,7 @@ export class LearnByTypingComponent implements OnInit {
 
   currentLanguagePack: LanuagePack;
 
-  selectedPackName: string = 'top-100-words';
+  selectedPackName: string = 'top-200-words';
   selectedPackNumber: number = 1;
   currentGameComplete = false;
 
@@ -38,7 +38,7 @@ export class LearnByTypingComponent implements OnInit {
   }
 
   initalize() {
-    this.languagePackService.getLanguagePack('top-100-words', 'es').then(pack => {
+    this.languagePackService.getLanguagePack('top-200-words', 'es').then(pack => {
       this.currentLanguagePack = pack;
       this.languagePackService.getGameWordsGiven(pack, 1).then(wordsForGame=> {
         this.typingGame = new TypingGame(wordsForGame)
@@ -92,7 +92,7 @@ export class LearnByTypingComponent implements OnInit {
           this.selectedPackNumber = settings.packNumber;
           this.typingGame = new TypingGame(wordsForGame)
           this.isGameInitialized = true
-          
+
           this.typingGame.onComplete.subscribe(completeEvent => {
             this.currentGameComplete = true;
           })

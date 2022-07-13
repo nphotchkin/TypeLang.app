@@ -25,9 +25,9 @@
           </div>
           <div *ngIf="isGameInitialized" class="card card-register">
             <div class="card-body m-4">
- 
+
               <div *ngIf="!currentGameComplete">
-                <i (click)="launchSettingsModal()" class="float-right fa-solid fa-gears"></i> 
+                <i (click)="launchSettingsModal()" class="float-right fa-solid fa-gears"></i>
                 <h1>
                   <img src="https://flagcdn.com/24x18/es.png" srcset="https://flagcdn.com/48x36/es.png 2x,
                     https://flagcdn.com/72x54/es.png 3x" width="24" height="18" alt="Spain">
@@ -39,13 +39,13 @@
                 </h1>
                 <form autocomplete="off">
                   <div class="form-group">
-                    <input #typingbox type="text" id="gameInput" (keyup)="onLetterTyped($event)" class="form-control" autocomplete="false" name="hidden" type="text"
-                      placeholder="Type to Play">
+                    <input #typingbox type="text" id="gameInput" (keyup)="onLetterTyped($event)" class="form-control"
+                      autocomplete="false" name="hidden" type="text" placeholder="Type to Play">
                   </div>
-  
+
                 </form>
-              </div> 
-               
+              </div>
+
               <div *ngIf="currentGameComplete">
                 <h4>Pack Complete!</h4>
                 <h5>Start over?</h5>
@@ -68,11 +68,14 @@
                 - For convience you should use a language (use english as the itermediary)
               -->
               <!-- <pre>{{ typingGame | json }}</pre> -->
-            
+
               <div class="d-flex justify-content-center">
                 <button (click)="restart()" placement="bottom" tooltip="Restart Test" style="color:white"
-                class="btn btn-primary" type="button">
-                <i class="fa-solid fa-rotate-left"></i>
+                  class="btn btn-primary" type="button">
+                  <i class="fa-solid fa-rotate-left"></i>
+                </button>
+                <button placement="bottom" tooltip="Play" style="color:white" class="btn btn-primary" type="button">
+                  Multiple Choice Game
                 </button>
               </div>
             </div>
