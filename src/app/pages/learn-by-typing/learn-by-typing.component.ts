@@ -1,4 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ModalDirective } from 'ngx-bootstrap/modal';
+import { LearnByTypingSettings } from 'src/app/shared/components/modal/learn-by-typing-settings-modal/LearnByTypingSettings';
 import { LanguagePackService } from 'src/app/shared/service/language-pack.service';
 import { ModalService } from 'src/app/shared/service/modal-launcher.service';
 import { LanguagePackResolver } from 'src/app/shared/util/TranslationFileResolver';
@@ -21,6 +23,9 @@ export class LearnByTypingComponent implements OnInit {
   isGameInitialized: boolean = false
 
   currentLanguagePack: LanuagePack;
+
+  selectedPackName: string = 'top-100-words';
+  selectedPackNumber: number = 1;
   
   constructor(
     private languagePackService: LanguagePackService,
@@ -32,15 +37,12 @@ export class LearnByTypingComponent implements OnInit {
   }
 
   initalize() {
-    console.log(this.languagePackService.listLanguagePackNames())
-
-    this.languagePackService.getLanguagePack('top-200-words', 'es').then(pack => {
+    this.languagePackService.getLanguagePack('top-100-words', 'es').then(pack => {
       this.currentLanguagePack = pack;
-      this.languagePackService.getGameWordsGiven(pack, 0).then(wordsForGame=> {
+      this.languagePackService.getGameWordsGiven(pack, 1).then(wordsForGame=> {
         this.typingGame = new TypingGame(wordsForGame)
         this.isGameInitialized = true
       })
-
     })
   }
 
@@ -70,7 +72,17 @@ export class LearnByTypingComponent implements OnInit {
   }
 
   launchSettingsModal() {
-    this.modalService.launchLearnByTypingSettings(this.currentLanguagePack)
+    var modalRef = this.modalService.launchLearnByTypingSettings(this.currentLanguagePack);
+
+    modalRef.content.event.subscribe(settings => {
+        this.isGameInitialized = false;
+        this.languagePackService.getGameWordsGiven(this.currentLanguagePack, settings.packNumber).then(wordsForGame=> {
+          this.selectedPackNumber = settings.packNumber;
+          this.typingGame = new TypingGame(wordsForGame)
+          this.isGameInitialized = true
+        })
+    });
+
   }
 
   private onCorrectWord(event: any, currentWord: string) {
