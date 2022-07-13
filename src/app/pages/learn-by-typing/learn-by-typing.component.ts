@@ -26,7 +26,8 @@ export class LearnByTypingComponent implements OnInit {
 
   selectedPackName: string = 'top-100-words';
   selectedPackNumber: number = 1;
-  
+  currentGameComplete = false;
+
   constructor(
     private languagePackService: LanguagePackService,
     private modalService: ModalService
@@ -41,9 +42,16 @@ export class LearnByTypingComponent implements OnInit {
       this.currentLanguagePack = pack;
       this.languagePackService.getGameWordsGiven(pack, 1).then(wordsForGame=> {
         this.typingGame = new TypingGame(wordsForGame)
+
+        this.typingGame.onComplete.subscribe(completeEvent => {
+          this.currentGameComplete = true;
+        })
+    
         this.isGameInitialized = true
       })
     })
+
+
   }
 
   onLetterTyped(event: any) {
@@ -57,6 +65,10 @@ export class LearnByTypingComponent implements OnInit {
     this.gameIsRunning = false
     this.countDownTimer.reset()
     this.typingGame = new TypingGame(this.typingGame.wordsForExistingGame)
+    this.currentGameComplete = false
+    this.typingGame.onComplete.subscribe(completeEvent => {
+      this.currentGameComplete = true;
+    })
   }
 
   newGame() {
@@ -80,9 +92,12 @@ export class LearnByTypingComponent implements OnInit {
           this.selectedPackNumber = settings.packNumber;
           this.typingGame = new TypingGame(wordsForGame)
           this.isGameInitialized = true
+          
+          this.typingGame.onComplete.subscribe(completeEvent => {
+            this.currentGameComplete = true;
+          })
         })
     });
-
   }
 
   private onCorrectWord(event: any, currentWord: string) {

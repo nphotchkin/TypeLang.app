@@ -1,9 +1,13 @@
+import { EventEmitter } from "@angular/core";
+import { Subject } from "rxjs";
 import { CurrentGameWords, WordTranslation, LetterCorrectness } from "./model/CurrentGameWords";
 
 export class TypingGame {
 
     private gameWords: CurrentGameWords
     private currentWordIndex = 0
+
+    onComplete = new Subject(); // TODO: MISSING OBSERVABLES ON DESTROY
 
     constructor(gameWords: CurrentGameWords) {
         this.gameWords = gameWords
@@ -33,6 +37,10 @@ export class TypingGame {
         if (totalMissingOrInCorrect == 0) {
             if (this.currentWordIndex < this.gameWords.words.length) {
                 this.currentWordIndex ++
+
+                if (this.currentWordIndex == this.gameWords.words.length) {
+                    this.onComplete.next(true)
+                }
                 return true
             }
         }
