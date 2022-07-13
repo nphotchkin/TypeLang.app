@@ -8,10 +8,12 @@ import { ProfilepageComponent } from "./pages/examples/profilepage/profilepage.c
 import { RegisterpageComponent } from "./pages/examples/registerpage/registerpage.component";
 import { LandingpageComponent } from "./pages/examples/landingpage/landingpage.component";
 import { LearnByTypingComponent } from "./pages/learn-by-typing/learn-by-typing.component";
+import { MultipleChoiceGameComponent } from "./pages/multiple-choice-game/multiple-choice-game.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "home", pathMatch: "full" },
   { path: "learn-by-typing", component: LearnByTypingComponent },
+  { path: "multiple-choice-game", component: MultipleChoiceGameComponent },
   { path: "home", component: IndexComponent },
   { path: "profile", component: ProfilepageComponent },
   { path: "register", component: RegisterpageComponent },

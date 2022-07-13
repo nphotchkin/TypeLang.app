@@ -23,6 +23,7 @@ import { RegisterpageComponent } from "./examples/registerpage/registerpage.comp
 import { LandingpageComponent } from "./examples/landingpage/landingpage.component";
 import { SharedModule } from "../shared/shared.module";
 import { LearnByTypingComponent } from './learn-by-typing/learn-by-typing.component';
+import { MultipleChoiceGameComponent } from './multiple-choice-game/multiple-choice-game.component';
 
 @NgModule({
   imports: [
@@ -49,7 +50,8 @@ import { LearnByTypingComponent } from './learn-by-typing/learn-by-typing.compon
     ProfilepageComponent,
     RegisterpageComponent,
     LandingpageComponent,
-    LearnByTypingComponent
+    LearnByTypingComponent,
+    MultipleChoiceGameComponent
   ],
   exports: [
     IndexComponent,
