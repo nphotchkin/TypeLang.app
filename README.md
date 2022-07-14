@@ -68,6 +68,9 @@ Every player has a rank, ranks are a delinated by an abitrary number of fully ra
 CREATE THE MODEL FOR YOU!
  - Users can feedback to the model how many stars it required for them to learn a given pack and you can select average pack lenght then learn from user there rate of learning.
 
+[Typing Game Stats](https://docs.google.com/spreadsheets/d/1oI6pzqCzjcnptOGzIktbBPbYnTh_l2tM_k34KRjYtvU/edit#gid=0)
+
+
 ..
 
 # Developers 
