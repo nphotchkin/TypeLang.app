@@ -2,7 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 import { LanguagePackService } from 'src/app/shared/service/language-pack.service';
 import { ModalService } from 'src/app/shared/service/modal-launcher.service';
-import { CountDownTimer } from 'src/app/typing-game/CountDownTimer';
+import { Timer } from 'src/app/typing-game/CountDownTimer';
 import { LanuagePack } from 'src/app/typing-game/model/LanguagePack';
 import { TypingGameStats } from 'src/app/typing-game/model/TypingGameStats';
 import { TypingGame } from 'src/app/typing-game/TypingGame';
@@ -15,7 +15,7 @@ import { TypingGame } from 'src/app/typing-game/TypingGame';
 export class LearnByTypingComponent implements OnInit {
 
   @ViewChild('typingbox') typingBox: ElementRef
-  countDownTimer: CountDownTimer = new CountDownTimer()
+  
   typingGame: TypingGame
   gameIsRunning: boolean = false
   isGameInitialized: boolean = false
@@ -62,22 +62,6 @@ export class LearnByTypingComponent implements OnInit {
       var wordCorrect = this.typingGame.checkWord(event.target.value)
       if (wordCorrect) this.onCorrectWord(event, currentWordBeforeChecking.wordInEnglish)
     }
-  
-  }
-
-  resetGame() {
-    this.gameIsRunning = false
-    this.countDownTimer.reset()
-    this.typingGame = new TypingGame(this.typingGame.wordsForExistingGame)
-    this.currentGameComplete = false
-    this.typingGame.onComplete.subscribe(completeEvent => {
-      this.currentGameComplete = true
-    })
-  }
-
-  newGame() {
-    this.gameIsRunning = true
-    this.countDownTimer.start(60)
   }
 
   restart() {
@@ -102,6 +86,20 @@ export class LearnByTypingComponent implements OnInit {
           })
         })
     });
+  }
+ 
+  private resetGame() {
+    this.gameIsRunning = false
+    this.typingGame = new TypingGame(this.typingGame.wordsForExistingGame)
+    this.currentGameComplete = false
+    this.typingGame.onComplete.subscribe(() => {
+      this.currentGameComplete = true
+    })
+  }
+
+  private newGame() {
+    this.gameIsRunning = true
+    this.typingGame.startGame()
   }
 
   private onCorrectWord(event: any, currentWord: string) {

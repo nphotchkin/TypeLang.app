@@ -44,7 +44,6 @@
 
                 </form>
               </div>  
-
               <div *ngIf="currentGameComplete">
                 <h1 class="row justify-content-center">🎉 Pack Complete! 🎉</h1>
                 <div class="row justify-content-center">
@@ -64,11 +63,13 @@
                       <thead>
                         <tr>
                           <th>Accuracy</th>
+                          <th>Time to Completion (Seconds)</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <td >{{ statsFromPreviousGame.accuracyPercentage }}% ({{ statsFromPreviousGame.totalWordsForCurrentGame - statsFromPreviousGame.incorrectWords.length}} /  {{ statsFromPreviousGame.totalWordsForCurrentGame }})</td>
+                          <td>{{ statsFromPreviousGame.accuracyPercentage }}% ({{ statsFromPreviousGame.totalWordsForCurrentGame - statsFromPreviousGame.incorrectWords.length}} /  {{ statsFromPreviousGame.totalWordsForCurrentGame }})</td>
+                          <td>{{ statsFromPreviousGame.totalTimeTypingInSeconds }}</td>
                         </tr>
                       </tbody>
                     </table>

@@ -1,36 +1,30 @@
 
-export class CountDownTimer {
+export class Timer {
 
-    private countDownFromInSeconds = 60;
-    private timeLeftInSeconds: number;
-    private intervalId: number = null;
+    private totalTime: number = 0
+    private intervalId: number = null
   
-    start(countDownFromInSeconds: number): void {
-      this.stop();
-  
-      this.countDownFromInSeconds = countDownFromInSeconds;
-      this.timeLeftInSeconds = countDownFromInSeconds;
-  
+    start(): void {
       this.intervalId = window.setInterval(() => {
-        this.timeLeftInSeconds = this.timeLeftInSeconds - 1;
+        this.totalTime = this.totalTime + 1
       }, 1000);
     }
   
     stop(): void {
       if (this.intervalId) {
-        clearInterval(this.intervalId);
-        this.intervalId = null;
+        clearInterval(this.intervalId)
+        this.intervalId = null
       }
     }
   
     reset(): void {
-      this.stop();
-      this.timeLeftInSeconds = this.countDownFromInSeconds;
+      this.stop()
+      this.totalTime = 0
     }
   
-    get timeLeft() {
-      return this.timeLeftInSeconds;
+    get totalTimeElapsedSeconds(): number {
+      return this.totalTime
     }
-  
+    
 }
   

@@ -1,4 +1,5 @@
 import { Subject } from "rxjs";
+import { Timer } from "./CountDownTimer";
 import { CurrentGameMetrics } from "./model/CurrentGameMetrics";
 import { CurrentGameWords, WordTranslation, LetterCorrectness } from "./model/CurrentGameWords";
 import { TypingGameStats } from "./model/TypingGameStats";
@@ -8,6 +9,7 @@ export class TypingGame {
     private currentGameMetrics: CurrentGameMetrics;
     private gameWords: CurrentGameWords
     private currentWordIndex = 0
+    private timer: Timer = new Timer()
 
     onComplete = new Subject<TypingGameStats>(); // TODO: MISSING OBSERVABLES ON DESTROY
 
@@ -26,6 +28,14 @@ export class TypingGame {
     
     get metricsForCurrentGame() {
         return this.currentGameMetrics
+    }
+
+    get time() {  
+        return this.timer.totalTimeElapsedSeconds
+    }
+
+    startGame() {
+       this.timer.start()
     }
 
     /**
@@ -51,7 +61,7 @@ export class TypingGame {
                 this.currentWordIndex ++
 
                 if (this.currentWordIndex == this.gameWords.words.length) {
-                    this.onComplete.next(new TypingGameStats(this.currentGameMetrics))
+                    this.onComplete.next(new TypingGameStats(this.currentGameMetrics, this.timer.totalTimeElapsedSeconds))
                 }
                 return true
             }
@@ -80,8 +90,6 @@ export class TypingGame {
             }
             index ++
         }
-        
-    
     }
 
     private onIncorrectWord(wordInSourceLanguage: string) { 
