@@ -25,7 +25,6 @@
           </div>
           <div *ngIf="isGameInitialized" class="card card-register">
             <div class="card-body m-4">
-
              <div *ngIf="!currentGameComplete">
                 <i (click)="launchSettingsModal()" class="float-right fa-solid fa-gears"></i>
                 <h1>
@@ -44,19 +43,40 @@
                   </div>
 
                 </form>
-              </div> 
+              </div>  
 
               <div *ngIf="currentGameComplete">
                 <h1 class="row justify-content-center">🎉 Pack Complete! 🎉</h1>
                 <div class="row justify-content-center">
                   <img src="https://flagcdn.com/24x18/es.png" srcset="https://flagcdn.com/48x36/es.png 2x,
                   https://flagcdn.com/72x54/es.png 3x" width="24" height="18" alt="Spain">
+
                   <h4 style="margin-left: 10px; margin-right: 10px;">
-                      ¡Bien hecho!
-                  </h4>  
+                    ¡Bien hecho!
+                  </h4>
                   <img src="https://flagcdn.com/24x18/es.png" srcset="https://flagcdn.com/48x36/es.png 2x,
                   https://flagcdn.com/72x54/es.png 3x" width="24" height="18" alt="Spain">
                 </div>
+                <div class="row justify-content-center">
+                <div class="row">
+                  <div class="col-12">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>Accuracy</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td >{{ statsFromPreviousGame.accuracyPercentage }}% ({{ statsFromPreviousGame.totalWordsForCurrentGame - statsFromPreviousGame.incorrectWords.length}} /  {{ statsFromPreviousGame.totalWordsForCurrentGame }})</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                </div>
+
+
                 <div class="row justify-content-center">
                   <h5>Start over?</h5>
                 </div>
@@ -85,7 +105,7 @@
                   class="btn btn-primary" type="button">
                   <i class="fa-solid fa-rotate-left"></i>
                 </button>
-               <!-- <button placement="bottom" tooltip="Play" style="color:white" class="btn btn-primary" type="button">
+                <!-- <button placement="bottom" tooltip="Play" style="color:white" class="btn btn-primary" type="button">
                   Multiple Choice Game
                 </button>  -->
               </div>

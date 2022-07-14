@@ -1,16 +1,19 @@
-import { EventEmitter } from "@angular/core";
 import { Subject } from "rxjs";
+import { CurrentGameMetrics } from "./model/CurrentGameMetrics";
 import { CurrentGameWords, WordTranslation, LetterCorrectness } from "./model/CurrentGameWords";
+import { TypingGameStats } from "./model/TypingGameStats";
 
 export class TypingGame {
 
+    private currentGameMetrics: CurrentGameMetrics;
     private gameWords: CurrentGameWords
     private currentWordIndex = 0
 
-    onComplete = new Subject(); // TODO: MISSING OBSERVABLES ON DESTROY
+    onComplete = new Subject<TypingGameStats>(); // TODO: MISSING OBSERVABLES ON DESTROY
 
     constructor(gameWords: CurrentGameWords) {
         this.gameWords = gameWords
+        this.currentGameMetrics = new CurrentGameMetrics(this.gameWords.words.length)
     }
 
     get currentWordTranslation(): WordTranslation {
@@ -20,6 +23,10 @@ export class TypingGame {
     get wordsForExistingGame(): CurrentGameWords {
         return this.gameWords;
     }
+    
+    get metricsForCurrentGame() {
+        return this.currentGameMetrics
+    }
 
     /**
      * Returns a list of numbers that represents
@@ -27,7 +34,12 @@ export class TypingGame {
      */
     checkWord(input: string): boolean {
         this.updateLetterCorrectnessForCurrentWordGiven(input);
-        return this.onCorrectWordMoveToNext(this.currentWordTranslation.correctLettersForWord)
+        if (this.currentWordTranslation.correctLettersForWord.includes("INCORRECT")) {
+            this.onIncorrectWord(this.currentWordTranslation.wordInSourceCountryLanguage)
+        }    
+        var wordCorrect = this.onCorrectWordMoveToNext(this.currentWordTranslation.correctLettersForWord)
+
+        return wordCorrect
     }
 
     onCorrectWordMoveToNext(letterCorrectnessArray) {
@@ -39,7 +51,7 @@ export class TypingGame {
                 this.currentWordIndex ++
 
                 if (this.currentWordIndex == this.gameWords.words.length) {
-                    this.onComplete.next(true)
+                    this.onComplete.next(new TypingGameStats(this.currentGameMetrics))
                 }
                 return true
             }
@@ -47,19 +59,36 @@ export class TypingGame {
         return false
     }
 
+    resetGame() {
+        this.currentGameMetrics = new CurrentGameMetrics(this.gameWords.words.length)
+    }
+
     private updateLetterCorrectnessForCurrentWordGiven(input: string) {
+        if (input == '') return
         var index = 0
         var currentWord = this.currentWordTranslation
-
-        currentWord.wordInSourceCountryLanguage.split('').forEach(letterInCurrentWord => {
+        var lettersInWordToType = currentWord.wordInSourceCountryLanguage.split('')
+        
+        for (let letter of lettersInWordToType) {
             var inputLetterForCurrentIndex = input.split('')[index]
-            if (inputLetterForCurrentIndex == letterInCurrentWord) {
+            if (index >= input.length) break
+            
+            if (inputLetterForCurrentIndex == letter) {
                 currentWord.correctLettersForWord[index] = LetterCorrectness[LetterCorrectness.CORRECT]
             } else {
                 currentWord.correctLettersForWord[index] = LetterCorrectness[LetterCorrectness.INCORRECT]
             }
             index ++
-        })
+        }
+        
+    
+    }
+
+    private onIncorrectWord(wordInSourceLanguage: string) { 
+        var wordAlreadyAlreadyMarkedIncorrect = this.currentGameMetrics.incorrectWords.includes(wordInSourceLanguage)
+        if (!wordAlreadyAlreadyMarkedIncorrect) {
+            this.currentGameMetrics.incorrectWords.push(wordInSourceLanguage)
+        }
     }
 
 }
