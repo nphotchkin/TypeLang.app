@@ -6,10 +6,10 @@ import { TypingGameStats } from "./model/TypingGameStats";
 
 export class TypingGame {
 
-    private currentGameMetrics: CurrentGameMetrics;
-    private gameWords: CurrentGameWords
-    private currentWordIndex = 0
-    private timer: Timer = new Timer()
+    public currentGameMetrics: CurrentGameMetrics;
+    public gameWords: CurrentGameWords
+    public currentWordIndex = 0
+    public timer: Timer = new Timer()
 
     onComplete = new Subject<TypingGameStats>(); // TODO: MISSING OBSERVABLES ON DESTROY
 
@@ -46,10 +46,10 @@ export class TypingGame {
         this.updateLetterCorrectnessForCurrentWordGiven(input);
         if (this.currentWordTranslation.correctLettersForWord.includes("INCORRECT")) {
             this.onIncorrectWord(this.currentWordTranslation.wordInSourceCountryLanguage)
-        }    
-        var wordCorrect = this.onCorrectWordMoveToNext(this.currentWordTranslation.correctLettersForWord)
+            return false
+        } 
 
-        return wordCorrect
+        return this.onCorrectWordMoveToNext(this.currentWordTranslation.correctLettersForWord)
     }
 
     onCorrectWordMoveToNext(letterCorrectnessArray) {
@@ -58,8 +58,11 @@ export class TypingGame {
         }).length
         if (totalMissingOrInCorrect == 0) {
             if (this.currentWordIndex < this.gameWords.words.length) {
+                console.log(this.currentWordIndex)
+                console.log(this.gameWords.words.length)
+                console.log("CORRECT WORD")
+          
                 this.currentWordIndex ++
-
                 if (this.currentWordIndex == this.gameWords.words.length) {
                     this.onComplete.next(new TypingGameStats(this.currentGameMetrics, this.timer.totalTimeElapsedSeconds))
                 }
@@ -74,7 +77,6 @@ export class TypingGame {
     }
 
     private updateLetterCorrectnessForCurrentWordGiven(input: string) {
-        if (input == '') return
         var index = 0
         var currentWord = this.currentWordTranslation
         var lettersInWordToType = currentWord.wordInSourceCountryLanguage.split('')

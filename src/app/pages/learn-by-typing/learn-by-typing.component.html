@@ -13,19 +13,19 @@
             <h4 class="float-left">
               <div class="row">
                 <h5>
-                  <span class="half-size">🗂️<b>{{ selectedPackName }}</b></span>
+                  <span class="half-size">🗂️<b>{{ currentGameSettings.selectedPackName }}</b></span>
                 </h5>
               </div>
               <div class="row">
                 <h5>
-                  <span class="half-size">📇<b>Pack: {{ selectedPackNumber }}</b></span>
+                  <span class="half-size">📇<b>Pack: {{ currentGameSettings.selectedPackNumber }}</b></span>
                 </h5>
               </div>
             </h4>
-          </div>
-          <div *ngIf="isGameInitialized" class="card card-register">
+          </div>        
+          <div *ngIf="currentGameSettings.isGameInitialized && typingGame != null" class="card card-register">
             <div class="card-body m-4">
-             <div *ngIf="!currentGameComplete">
+             <div *ngIf="!currentGameSettings.currentGameComplete">
                 <i (click)="launchSettingsModal()" class="float-right fa-solid fa-gears"></i>
                 <h1>
                   <img src="https://flagcdn.com/24x18/es.png" srcset="https://flagcdn.com/48x36/es.png 2x,
@@ -44,7 +44,7 @@
 
                 </form>
               </div>  
-              <div *ngIf="currentGameComplete">
+              <div *ngIf="currentGameSettings.currentGameComplete">
                 <h1 class="row justify-content-center">🎉 Pack Complete! 🎉</h1>
                 <div class="row justify-content-center">
                   <img src="https://flagcdn.com/24x18/es.png" srcset="https://flagcdn.com/48x36/es.png 2x,
@@ -68,8 +68,8 @@
                       </thead>
                       <tbody>
                         <tr>
-                          <td>{{ statsFromPreviousGame.accuracyPercentage }}% ({{ statsFromPreviousGame.totalWordsForCurrentGame - statsFromPreviousGame.incorrectWords.length}} /  {{ statsFromPreviousGame.totalWordsForCurrentGame }})</td>
-                          <td>{{ statsFromPreviousGame.totalTimeTypingInSeconds }}</td>
+                          <td>{{ currentGameSettings.statsForRecentGame.accuracyPercentage }}% ({{ currentGameSettings.statsForRecentGame.totalWordsForCurrentGame - currentGameSettings.statsForRecentGame.incorrectWords.length}} /  {{ currentGameSettings.statsForRecentGame.totalWordsForCurrentGame }})</td>
+                          <td>{{ currentGameSettings.statsForRecentGame.totalTimeTypingInSeconds }}</td>
                         </tr>
                       </tbody>
                     </table>
