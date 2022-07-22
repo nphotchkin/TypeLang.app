@@ -23,4 +23,10 @@ export class CurrentGameState {
         this.isGameInitialized = true
     }
 
+    onEndGameEvent(typingGameStats: TypingGameStats) {
+        this.currentGameComplete = true
+        this.gameIsRunning = false
+        this.statsForRecentGame = typingGameStats
+    }
+
 }

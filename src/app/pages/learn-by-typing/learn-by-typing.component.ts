@@ -44,9 +44,7 @@ export class LearnByTypingComponent implements OnInit {
         this.currentGameSettings.gameInitialized()
 
         this.typingGame.onComplete.subscribe((typingGameStats: TypingGameStats) => {
-          this.currentGameSettings.currentGameComplete = true
-          this.currentGameSettings.gameIsRunning = false
-          this.currentGameSettings.statsForRecentGame = typingGameStats
+          this.currentGameSettings.onEndGameEvent(typingGameStats)
         })
 
       })
