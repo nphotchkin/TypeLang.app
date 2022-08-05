@@ -39,7 +39,7 @@ export class LearnByTypingComponent implements OnInit {
     this.currentGameSettings.resetGame()
     this.languagePackService.getLanguagePack(this.currentGameSettings.selectedPackName, this.currentGameSettings.targetCountryCode).then(pack => {
       this.currentGameSettings.currentLanguagePack = pack;
-      this.languagePackService.getGameWordsGiven(pack, 1).then(wordsForGame=> {
+      this.languagePackService.getGameWordsGiven(pack, this.currentGameSettings.selectedPackNumber).then(wordsForGame=> {
         this.typingGame = new TypingGame(wordsForGame)
         this.currentGameSettings.gameInitialized()
 
@@ -65,6 +65,7 @@ export class LearnByTypingComponent implements OnInit {
     modalRef.content.event.subscribe(settings => {
       this.currentGameSettings.selectedPackNumber = settings.packNumber
       this.currentGameSettings.selectedPackName = settings.languagePackName
+      this.restart()
     });
   }
 
