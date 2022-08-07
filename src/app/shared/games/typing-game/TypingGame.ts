@@ -1,8 +1,9 @@
 import { Subject } from "rxjs";
 import { Timer } from "./CountDownTimer";
 import { CurrentGameMetrics } from "./model/CurrentGameMetrics";
-import { CurrentGameWords, WordTranslation, LetterCorrectness } from "./model/CurrentGameWords";
+import { CurrentGameWords, LetterCorrectness } from "./model/CurrentGameWords";
 import { TypingGameStats } from "./model/TypingGameStats";
+import { WordTranslation } from "./model/WordTranslation";
 
 export class TypingGame {
 

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { LanuagePack } from 'src/app/typing-game/model/LanguagePack';
+import { LanuagePack } from 'src/app/shared/games/typing-game/model/LanguagePack';
 import { LearnByTypingSettings } from './LearnByTypingSettings';
 
 @Component({

@@ -1,10 +1,10 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { CurrentGameState } from 'src/app/shared/games/typing-game/model/CurrentGameSettings';
+import { TypingGameStats } from 'src/app/shared/games/typing-game/model/TypingGameStats';
+import { TypingGame } from 'src/app/shared/games/typing-game/TypingGame';
 
 import { LanguagePackService } from 'src/app/shared/service/language-pack.service';
 import { ModalService } from 'src/app/shared/service/modal-launcher.service';
-import { CurrentGameState } from 'src/app/typing-game/model/CurrentGameSettings';
-import { TypingGameStats } from 'src/app/typing-game/model/TypingGameStats';
-import { TypingGame } from 'src/app/typing-game/TypingGame';
 
 @Component({
   selector: 'app-learn-by-typing',

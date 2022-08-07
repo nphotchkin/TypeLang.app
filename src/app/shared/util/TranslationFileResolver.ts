@@ -1,4 +1,5 @@
-import { LanuagePack } from "src/app/typing-game/model/LanguagePack";
+import { LanuagePack } from "../games/typing-game/model/LanguagePack";
+
 
 export class LanguagePackResolver {
 

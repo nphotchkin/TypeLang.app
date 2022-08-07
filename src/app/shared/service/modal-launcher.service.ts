@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BsModalRef, BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
-import { LanuagePack } from 'src/app/typing-game/model/LanguagePack';
 import { LearnByTypingSettingsModalComponent } from '../components/modal/learn-by-typing-settings-modal/learn-by-typing-settings-modal.component';
+import { LanuagePack } from '../games/typing-game/model/LanguagePack';
 
 @Injectable({
   providedIn: 'root'

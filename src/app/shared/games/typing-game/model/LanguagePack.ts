@@ -1,4 +1,4 @@
-import { WordTranslation } from "./CurrentGameWords";
+import { WordTranslation } from "./WordTranslation";
 
 /**
  * A language pack represent's some concept that has been split into 10 words (bitsize chunks) for learning
