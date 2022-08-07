@@ -10,7 +10,11 @@ export class ModalService {
 
   constructor(private modalService: BsModalService) {}
 
-  launchLearnByTypingSettings(languagePack: LanuagePack): BsModalRef {
+  /**
+   * Launch a settings modal directly, use settings manager instead.
+   * @see SettingsManagerService
+   */
+  public launchGameSettingsModal(languagePack: LanuagePack): BsModalRef {
     const modalData = {
       languagePack: languagePack
     };
