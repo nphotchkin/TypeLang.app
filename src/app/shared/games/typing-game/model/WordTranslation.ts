@@ -5,7 +5,7 @@ export class WordTranslation { // TODO: move this model to its own file
     wordInTargetCountryLanguage: string;
     wordInEnglish: string;
     voiceClipPlayBackLength: number;
-    correctLettersForWord: string[]; // letter correctness
+    correctLettersForWord: string[]; // letter correctness -- TODO this should go in a different model which extends word translation
 
     constructor( 
         wordInSourceCountryLanguage: string,

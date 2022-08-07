@@ -36,7 +36,6 @@ export class LanguagePackService {
         var wordTranslationsForFirstPack = languagePack.packs[packNumber -1].wordTranslations
         initializeWordCorrectnessForGame(wordTranslationsForFirstPack)
 
-        
         var wordsForSelectedPackInLangagePack = new CurrentGameWords(
             languagePack.sourceCountryCode,
             languagePack.targetCountryCode,
