@@ -13,16 +13,16 @@
             <h4 class="float-left">
               <div class="row">
                 <h5>
-                  <span class="half-size">🗂️<b>{{ currentGameState.selectedPackName }}</b></span>
+                  <span class="half-size">🗂️<b>{{ gameSettings.languagePackName }}</b></span>
                 </h5>
               </div>
               <div class="row">
                 <h5>
-                  <span class="half-size">📇<b>Pack: {{ currentGameState.selectedPackNumber }}</b></span>
+                  <span class="half-size">📇<b>Pack: {{ gameSettings.packNumber }}</b></span>
                 </h5>
               </div>
             </h4>
-          </div>        
+          </div>         
           <div *ngIf="currentGameState.isGameInitialized && typingGame != null" class="card card-register">
             <div class="card-body m-4">
              <div *ngIf="!currentGameState.currentGameComplete">

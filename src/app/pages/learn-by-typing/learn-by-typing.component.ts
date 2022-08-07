@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { GameSettings } from 'src/app/shared/components/modal/learn-by-typing-settings-modal/GameSettings';
 import { CurrentGameState } from 'src/app/shared/games/typing-game/model/CurrentGameSettings';
 import { TypingGameStats } from 'src/app/shared/games/typing-game/model/TypingGameStats';
 import { TypingGame } from 'src/app/shared/games/typing-game/TypingGame';
@@ -17,6 +18,7 @@ export class LearnByTypingComponent implements OnInit {
   // countDownTimer: CountDownTimer = new CountDownTimer()
   typingGame: TypingGame
   currentGameState: CurrentGameState
+  gameSettings: GameSettings
   
   constructor(
     private languagePackService: LanguagePackService,
@@ -25,12 +27,13 @@ export class LearnByTypingComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentGameState = new CurrentGameState()
-
+    
+    this.gameSettings = this.settingsManager.defaultSettings();
     this.settingsManager.settingsUpdatedEvent.subscribe(settings => {
-      this.currentGameState.selectedPackNumber = settings.packNumber
-      this.currentGameState.selectedPackName = settings.languagePackName
+      this.gameSettings = settings
       this.restart()
     })
+
     this.newGame()
   }
 
@@ -43,9 +46,9 @@ export class LearnByTypingComponent implements OnInit {
 
   newGame() {
     this.currentGameState.resetGame()
-    this.languagePackService.getLanguagePack(this.currentGameState.selectedPackName, this.currentGameState.targetCountryCode).then(pack => {
+    this.languagePackService.getLanguagePack(this.gameSettings.languagePackName, this.gameSettings.targetCountryCode).then(pack => {
       this.currentGameState.currentLanguagePack = pack;
-      this.languagePackService.getGameWordsGiven(pack, this.currentGameState.selectedPackNumber).then(wordsForGame=> {
+      this.languagePackService.getGameWordsGiven(pack, this.gameSettings.packNumber).then(wordsForGame=> {
         this.typingGame = new TypingGame(wordsForGame)
         this.currentGameState.gameInitialized()
 

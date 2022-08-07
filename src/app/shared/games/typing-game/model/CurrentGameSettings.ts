@@ -7,9 +7,6 @@ export class CurrentGameState {
     isGameInitialized: boolean = false
     currentGameComplete = false
     currentLanguagePack: LanuagePack
-    selectedPackNumber: number = 1
-    selectedPackName: string = 'top-200-words'
-    targetCountryCode: string = 'es'
     statsForRecentGame: TypingGameStats
 
     resetGame() {

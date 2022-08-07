@@ -1,6 +1,6 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { Maybe } from 'purify-ts';
-import { LearnByTypingSettings } from '../components/modal/learn-by-typing-settings-modal/LearnByTypingSettings';
+import { GameSettings as GameSettings } from '../components/modal/learn-by-typing-settings-modal/GameSettings';
 import { LanuagePack } from '../games/typing-game/model/LanguagePack';
 import { ModalService } from './modal-launcher.service';
 
@@ -9,7 +9,7 @@ import { ModalService } from './modal-launcher.service';
 })
 export class SettingsManagerService {
 
-  public settingsUpdatedEvent: EventEmitter<LearnByTypingSettings> = new EventEmitter();
+  public settingsUpdatedEvent: EventEmitter<GameSettings> = new EventEmitter();
 
   constructor(private modalService: ModalService) {}
 
@@ -21,6 +21,10 @@ export class SettingsManagerService {
         this.settingsUpdatedEvent.emit(updatedSettings);
       })
     });
+  }
+
+  defaultSettings(): GameSettings {
+    return GameSettings.ofDefault()
   }
 
 
