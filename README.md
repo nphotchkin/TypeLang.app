@@ -18,14 +18,6 @@
  
 <br/> 
 
-# Want to Contribute?
-
-Refer to [CONTRIBUTING.md](./CONTRIBUTING.md).
-
-# Code of Conduct
-
-Before contributing to this repository, please read the [code of conduct](./CODE_OF_CONDUCT.md).
-
 # Note Well
 The purpose of this project is primarily to develop a POC so I can earn Spanish the lazy mans way, i'd like to use this project to improve my frontend development skills (Clean Code / Design Patterns) but may abandon this idea to just `Make it work`.
 
@@ -33,3 +25,14 @@ The purpose of this project is primarily to develop a POC so I can earn Spanish 
 
 # Developers 
 [UI Kit Docs](https://demos.creative-tim.com/blk-design-system-angular/#/documentation/grid)
+
+
+# This project is closed currently closed for direct contribution but feel free to fork it / steal whatever you want. 
+-----
+# Want to Contribute
+
+Refer to [CONTRIBUTING.md](./CONTRIBUTING.md).
+
+# Code of Conduct
+
+Before contributing to this repository, please read the [code of conduct](./CODE_OF_CONDUCT.md).
