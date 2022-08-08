@@ -42,3 +42,9 @@ CREATE THE MODEL FOR YOU!
  - Users can feedback to the model how many stars it required for them to learn a given pack and you can select average pack lenght then learn from user there rate of learning.
 
 [Typing Game Stats](https://docs.google.com/spreadsheets/d/1oI6pzqCzjcnptOGzIktbBPbYnTh_l2tM_k34KRjYtvU/edit#gid=0)
+
+# TODO: 
+- Check these out:
+ - https://www.sitepoint.com/syncing-css-animations-with-html5-audio/
+ - https://github.com/chrvadala/music-beat-detector  
+ - https://huggingface.co/models?pipeline_tag=text-to-image&sort=downloads (cache results from english lookups)
