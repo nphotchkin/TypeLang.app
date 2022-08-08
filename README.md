@@ -31,6 +31,11 @@ Before contributing to this repository, please read the [code of conduct](./CODE
 
 # Notes
 
+Ideally i'd like to encorporate this:  
+[The Solar System Theory](https://www.youtube.com/watch?v=95NgtNgmnWA&list=WL&index=2&ab_channel=NathanielDrew)
+
+
+
 Pack size = 10 (I heard somewhere once that you can't fit more than 10 things in your head at once).
 
 There appears to be two types of learning `games` drilling words is the main aim of this. Then there is scenario based (grammar etc.) this is difficult to generalize as it varies by language. 
