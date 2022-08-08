@@ -26,6 +26,9 @@ Refer to [CONTRIBUTING.md](./CONTRIBUTING.md).
 
 Before contributing to this repository, please read the [code of conduct](./CODE_OF_CONDUCT.md).
 
+# Note Well
+The purpose of this project is primarily to develop a POC so I can earn Spanish the lazy mans way, i'd like to use this project to improve my frontend development skills (Clean Code / Design Patterns) but may abandon this idea to just `Make it work`.
+
 - [Notes](./RAMBLINGS.md)
 
 # Developers 
