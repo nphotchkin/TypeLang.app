@@ -26,9 +26,14 @@ The purpose of this project is primarily to develop a POC so I can earn Spanish 
 # Developers 
 [UI Kit Docs](https://demos.creative-tim.com/blk-design-system-angular/#/documentation/grid)
 
+---
+<br>
+<br>
+<br>
+<br>
+<br>
 
-# This project is closed currently closed for direct contribution but feel free to fork it / steal whatever you want. 
------
+### This project is closed currently closed for direct contribution but feel free to fork it / steal whatever you want. 
 # Want to Contribute
 
 Refer to [CONTRIBUTING.md](./CONTRIBUTING.md).
