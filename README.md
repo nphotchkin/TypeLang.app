@@ -26,21 +26,7 @@ Refer to [CONTRIBUTING.md](./CONTRIBUTING.md).
 
 Before contributing to this repository, please read the [code of conduct](./CODE_OF_CONDUCT.md).
 
-# Support
-
-
-# [Notes](./RAMBLINGS.md)
-
-..
+- [Notes](./RAMBLINGS.md)
 
 # Developers 
 [UI Kit Docs](https://demos.creative-tim.com/blk-design-system-angular/#/documentation/grid)
-
-GITHUB = FREE HOSTING:
- - https://medium.com/@svinkle/publish-and-share-your-own-website-for-free-with-github-2eff049a1cb5
-
-# TODO: 
-- Check these out:
- - https://www.sitepoint.com/syncing-css-animations-with-html5-audio/
- - https://github.com/chrvadala/music-beat-detector  
- - https://huggingface.co/models?pipeline_tag=text-to-image&sort=downloads (cache results from english lookups)
