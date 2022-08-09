@@ -20,6 +20,8 @@ export class LearnByTypingComponent implements OnInit {
   currentGameState: CurrentGameState
   gameSettings: GameSettings
   
+  switchSize: number = 2000
+
   constructor(
     private languagePackService: LanguagePackService,
     private settingsManager: SettingsManagerService
