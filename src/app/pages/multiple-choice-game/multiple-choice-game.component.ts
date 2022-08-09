@@ -1,10 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { GameSettings } from 'src/app/shared/components/modal/learn-by-typing-settings-modal/GameSettings';
+import { QuestionAndAnswers } from 'src/app/shared/games/multiple-choice-game/model/QuestionAndAnswer';
 import { MultipleChoiceGame } from 'src/app/shared/games/multiple-choice-game/MultipleChoiceGame';
-import { CurrentGameWords } from 'src/app/shared/games/typing-game/model/CurrentGameWords';
 import { LanuagePack } from 'src/app/shared/games/typing-game/model/LanguagePack';
 import { WordTranslation } from 'src/app/shared/games/typing-game/model/WordTranslation';
-import { TypingGame } from 'src/app/shared/games/typing-game/TypingGame';
 import { LanguagePackService } from 'src/app/shared/service/language-pack.service';
 import { SettingsManagerService } from 'src/app/shared/service/settings-manager.service';
 
@@ -19,8 +18,9 @@ export class MultipleChoiceGameComponent implements OnInit {
   multipleChoiceGame: MultipleChoiceGame;
   gameSettings: GameSettings
 
-  questionAndAnswer: any;
+  questionAndAnswer: QuestionAndAnswers;
   endOfGame: boolean = false
+  gameInitalized = false
 
   constructor(
     private languagePackService: LanguagePackService,
@@ -33,18 +33,15 @@ export class MultipleChoiceGameComponent implements OnInit {
   }
 
   newGame() {
-
     this.languagePackService.getLanguagePack(this.gameSettings.languagePackName, this.gameSettings.targetCountryCode).then(pack => {
       this.currentLanguagePack = pack;
       this.languagePackService.getGameWordsGiven(pack, this.gameSettings.packNumber).then(wordsForGame=> {
-
-        // wordsForGame.shuffleWords()
         this.multipleChoiceGame = new MultipleChoiceGame(wordsForGame);
-        this.questionAndAnswer = this.multipleChoiceGame.currentQuestionAndAnswer;
+        this.questionAndAnswer = this.multipleChoiceGame.getCurrentQuestionAndAnswer();
+        this.gameInitalized = true
         this.multipleChoiceGame.onComplete.subscribe(() => {
           this.endOfGame = true
         })
-
       })
     })
   }

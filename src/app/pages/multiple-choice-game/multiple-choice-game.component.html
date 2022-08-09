@@ -18,33 +18,30 @@
               </div>
             </h4>
           </div>    
-          <div class="card card-register">
+           <div *ngIf="gameInitalized" class="card card-register">
             <div class="card-body m-4">
               <i (click)="launchSettingsModal()" class="float-right fa-solid fa-gears"></i>
               <h1><img src="https://flagcdn.com/24x18/gb-eng.png" srcset="https://flagcdn.com/48x36/gb-eng.png 2x,
                     https://flagcdn.com/72x54/gb-eng.png 3x" width="24" height="18" alt="England">
-                {{   questionAndAnswer.question.wordInSourceCountryLanguage }}
+                  {{ questionAndAnswer.question.wordInSourceCountryLanguage }}
               </h1>
               <hr>
               <div class="container text-center">
-                <div *ngFor="let answersSet of questionAndAnswer.answers; let i = index" class="row m-2">
-                    <div *ngFor="let answer of answersSet" class="col-lg">
-                      <button (click)="checkAnswer(answer, $event)" type="button" class="btn btn-primary btn-lg">
-                        <!-- {{ answer.wordInTargetCountryLanguage }} -->
-                        {{ answer.wordInTargetCountryLanguage }}
-                      </button>
-                    </div>
+                <div *ngFor="let answer of questionAndAnswer.answers; let i = index" class="row m-2">
+                    <button (click)="checkAnswer(answer, $event)" type="button" class="btn btn-primary" style="min-width: 100%">
+                      {{ answer.wordInTargetCountryLanguage }}
+                    </button>
                 </div>
               </div>
               <h5 *ngIf="endOfGame">End Of Pack</h5>
-              <div class="d-flex justify-content-center">
+              <div class="d-flex justify-content-center mt-4">
                 <button (click)="restart()" placement="bottom" tooltip="Restart Test" style="color:white"
-                class="btn btn-primary" type="button">
+                class="btn btn-danger" type="button">
                 <i class="fa-solid fa-rotate-left"></i>
                 </button>
               </div> 
             </div>
-          </div>
+          </div> 
         </div>
       </div>
     </div>

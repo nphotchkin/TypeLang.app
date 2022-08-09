@@ -1,9 +1,17 @@
+import { WordTranslation } from "../../typing-game/model/WordTranslation";
 
+export class QuestionAndAnswers {
+    
+    question: WordTranslation;
+    answers: WordTranslation[];
 
-// class QuestionAndAnswer {
-//     question: 
-// }
-//   questionAndAnswer: any = {
-//     question: "B",
-//     answers: [["A", "B"], ["C", "D"]]
-// }
+    constructor(question: WordTranslation, answers: WordTranslation[]) {
+        this.question = question
+        this.answers = answers
+    }
+
+    public isUsersAnswerCorrect(userAnswer: WordTranslation): boolean {
+        return userAnswer.wordInEnglish === this.question.wordInEnglish
+    }
+
+}

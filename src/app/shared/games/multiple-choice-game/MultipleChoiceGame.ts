@@ -1,41 +1,36 @@
+import { unix } from "ngx-bootstrap/chronos/utils/date-getters";
 import { Just, Maybe } from "purify-ts";
 import { Subject } from "rxjs";
 import { CurrentGameWords } from "../typing-game/model/CurrentGameWords";
 import { WordTranslation } from "../typing-game/model/WordTranslation";
+import { UniqueMultipleChoiceGenerator } from "./util/UniqueMultipleChoiceGenerator";
+import { QuestionAndAnswers } from "./model/QuestionAndAnswer";
 
 export class MultipleChoiceGame {
 
     currentWordIndex: number = 0
     gameWords: CurrentGameWords
-
-    onComplete = new Subject<boolean>(); // TODO: MISSING OBSERVABLES ON DESTROY
-
-    questionAndAnswer = null
+    currentQuestionAndAnswer: QuestionAndAnswers = undefined
+    onComplete = new Subject<boolean>()
 
     constructor(gameWords: CurrentGameWords) { 
         this.gameWords = gameWords
-        this.questionAndAnswer = this.newQuestionAndAnswers()
+        this.currentQuestionAndAnswer = this.newQuestionAndAnswers()
     }
 
-    get currentQuestionAndAnswer() {
-        return this.questionAndAnswer
+    getCurrentQuestionAndAnswer() {
+        return this.currentQuestionAndAnswer
     }
 
-    checkAnswer(answer: WordTranslation): Maybe<Object> {
-
-        console.log(answer)
-        console.log(this.currentWord())
-
-        if (answer.wordInEnglish === this.currentWord().wordInEnglish) {
-            console.log("NEW QUESTIOH AND ANSWER")
+    checkAnswer(answer: WordTranslation): Maybe<QuestionAndAnswers> {
+        if (this.currentQuestionAndAnswer.isUsersAnswerCorrect(answer)) {
             this.currentWordIndex ++
-        
-            if (this.currentWordIndex == this.gameWords.words.length) {
+            if (this.isLastWordForCurrentGame()) {
                 this.onComplete.next(true)
                 return Maybe.empty()
             }
-
-            return Just(this.newQuestionAndAnswers())
+            this.currentQuestionAndAnswer = this.newQuestionAndAnswers()
+            return Just(this.currentQuestionAndAnswer)
         }
         return Maybe.empty()
     }
@@ -44,56 +39,15 @@ export class MultipleChoiceGame {
        return this.gameWords.words[this.currentWordIndex]
     }
 
-
-    private newQuestionAndAnswers() {
-        return { // a question and answer
-            question: this.currentWord(),
-            answers: this.newAnswersOneOfIsCorrect() /// TODO THIS DOESNT CHECK UNIQUENESS
-        }
+    private newQuestionAndAnswers(): QuestionAndAnswers {
+        var uniqueMultipleChoiceGenerator = new UniqueMultipleChoiceGenerator(
+            this.currentWord(), this.gameWords.words
+        );
+        return uniqueMultipleChoiceGenerator.generate();
     }
 
-    private newAnswersOneOfIsCorrect() {
-        let allAnswers = [];
-        allAnswers.push(this.aRandomWordFromTargetCountryNotContaining())
-        allAnswers.push(this.aRandomWordFromTargetCountryNotContaining())
-        allAnswers.push(this.aRandomWordFromTargetCountryNotContaining())
-        allAnswers.push(this.currentWord())
-
-        var shuffled = this.shuffleArray(allAnswers)
-
-        var answersArray = [];
-        answersArray.push([shuffled[0], shuffled[1]])
-        answersArray.push([shuffled[2], shuffled[3]])
-        return answersArray
-    }
-
-    // it should actually implment aRandomWordFromTargetCountryNotContaining(array), make it clean though
-        // ALSO you should check that there a no WRONG answers that are a duplicate of the correct answer.  
-            // e.g. TO = A and A = A
-                // So check that random.targetWord != to correct.targetWord
-                // Make a utility class for this
-    private aRandomWordFromTargetCountryNotContaining() {
-        var randomIndex;
-        do {
-           randomIndex =  this.randomNumberBetween(0, this.gameWords.words.length);
-        } while(randomIndex == this.currentWordIndex);
-
-        return this.gameWords.words[randomIndex]
-    }    
-
-    /**
-     * Returns a random number between min (inclusive) and max (exclusive)
-     */
-    private randomNumberBetween(min, max) {
-        return Math.floor(Math.random() * (max - min) + min);
-    }
-
-    /* Schwartzian transform */
-    private shuffleArray(unshuffled) {
-        return unshuffled
-            .map(value => ({ value, sort: Math.random() }))
-            .sort((a, b) => a.sort - b.sort)
-            .map(({ value }) => value)
+    private isLastWordForCurrentGame(): boolean {
+        return this.currentWordIndex == this.gameWords.words.length
     }
 
 }
