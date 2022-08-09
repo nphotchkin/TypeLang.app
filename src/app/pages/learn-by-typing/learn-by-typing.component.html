@@ -4,54 +4,7 @@
     <div class="container">
       <div class="content-center brand">
         <div class="center">
-          <!-- <h2>All Words: {{ typingGame.allWords}}</h2> -->
-          <!-- <h5>Words to Type: {{ typingGame.wordsToTypeArray | json }}</h5> -->
-          <!-- <h1 class="float-right">
-            <span class="half-size">{{countDownTimer.timeLeft}}</span>
-          </h1> -->
-          <div class="card">
-            <div class="row">
-              <div class="col-6">
-                <div class="float-left m-4">
-                  <div style="margin-left: 25px;">
-                    <div class="row">
-                      <h5>
-                        <span class="half-size">🗂️<b>{{ gameSettings.languagePackName }}</b></span>
-                      </h5>
-                    </div>
-                    <div class="row">
-                      <h5>
-                        <span class="half-size">📇<b>Pack: {{ gameSettings.packNumber }}</b></span>
-                      </h5>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-6">
-                <div class="float-right m-4">
-                  <div class="row">
-                    <div class="col">
-                      <div style="font-size: 10px; margin-bottom: 5px; margin-left: 15px; margin-right: 10px" class="row">
-                        <b>Type</b>
-                      </div>
-                      <bSwitch
-                        [switch-off-text]="'⌨️'"
-                        [switch-on-text]="'📊 '">
-                      </bSwitch>
-                    </div>
-                    <div class="col">
-                      <div style="font-size: 10px; margin-bottom: 5px; margin-left: 30px; margin-right: 10px" class="row">
-                        Settings
-                      </div>
-                      <div style="margin-left: 27px">
-                        <i (click)="launchSettingsModal()" class="fa-solid fa-gears"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>    
-            </div>
-          </div>         
+          <app-game-controls [gameSettings]="gameSettings" [currentLanguagePack]="currentGameState.currentLanguagePack"></app-game-controls>
           <div *ngIf="currentGameState.isGameInitialized && typingGame != null" class="card card-register">
             <div class="card-body m-4">
              <div *ngIf="!currentGameState.currentGameComplete">

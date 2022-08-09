@@ -18,6 +18,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { LearnByTypingSettingsModalComponent } from './components/modal/learn-by-typing-settings-modal/learn-by-typing-settings-modal.component';
+import { GameControlsComponent } from './components/game-controls/game-controls.component';
 
 @NgModule({
   imports: [
@@ -41,11 +42,13 @@ import { LearnByTypingSettingsModalComponent } from './components/modal/learn-by
   declarations: [
     NavigationComponent,
     FooterComponent,
-    LearnByTypingSettingsModalComponent
+    LearnByTypingSettingsModalComponent,
+    GameControlsComponent
   ],
   exports: [
     NavigationComponent,
-    FooterComponent
+    FooterComponent,
+    GameControlsComponent
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })

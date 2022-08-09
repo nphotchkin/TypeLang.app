@@ -69,10 +69,6 @@ export class LearnByTypingComponent implements OnInit {
     this.newGame()
   }
 
-  launchSettingsModal() {
-    this.settingsManager.launchGameSettings(this.currentGameState.currentLanguagePack);
-  }
-
   private onCorrectWord(event: any, currentWord: string) {
     event.target.style.color = "#90ee90"
     event.target.style.fontWeight = "bold"

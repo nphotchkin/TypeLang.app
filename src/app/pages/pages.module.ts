@@ -24,6 +24,7 @@ import { LandingpageComponent } from "./examples/landingpage/landingpage.compone
 import { SharedModule } from "../shared/shared.module";
 import { LearnByTypingComponent } from './learn-by-typing/learn-by-typing.component';
 import { MultipleChoiceGameComponent } from './multiple-choice-game/multiple-choice-game.component';
+import { GamesComponent } from './games/games.component';
 
 @NgModule({
   imports: [
@@ -51,7 +52,8 @@ import { MultipleChoiceGameComponent } from './multiple-choice-game/multiple-cho
     RegisterpageComponent,
     LandingpageComponent,
     LearnByTypingComponent,
-    MultipleChoiceGameComponent
+    MultipleChoiceGameComponent,
+    GamesComponent
   ],
   exports: [
     IndexComponent,
