@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Just, Maybe, Nothing } from 'purify-ts';
-import { LanuagePack } from 'src/app/shared/games/typing-game/model/LanguagePack';
+import { LanguagePack } from 'src/app/shared/games/typing-game/model/LanguagePack';
 import { GameSettings } from './GameSettings';
 
 @Component({
@@ -11,7 +11,7 @@ import { GameSettings } from './GameSettings';
 })
 export class LearnByTypingSettingsModalComponent implements OnInit {
 
-  languagePack: LanuagePack;
+  languagePack: LanguagePack;
 
   selectedPack: any = "1";
 

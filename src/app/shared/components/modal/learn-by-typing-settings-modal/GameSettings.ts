@@ -1,6 +1,8 @@
+import { GameType } from "src/app/shared/games/model/enum/GameType"
 
 export class GameSettings {
 
+    gameType: GameType = GameType.TYPING_GAME
     languagePackName: string
     packNumber: number
     targetCountryCode: string

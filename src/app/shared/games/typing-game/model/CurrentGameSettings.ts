@@ -1,13 +1,19 @@
-import { LanuagePack } from "./LanguagePack";
+import { lazy } from "purify-ts";
+import { LanguagePackService } from "src/app/shared/service/language-pack.service";
+import { LanguagePack } from "./LanguagePack";
 import { TypingGameStats } from "./TypingGameStats";
 
 export class CurrentGameState {
 
     gameIsRunning: boolean = false
     isGameInitialized: boolean = false
-    currentGameComplete = false
-    currentLanguagePack: LanuagePack
+    currentGameComplete = false // TODO REMOVE PROP MANAGED BY A COMPONENT
+    currentLanguagePack: LanguagePack
     statsForRecentGame: TypingGameStats
+
+    constructor(languagePack: LanguagePack) {
+        this.currentLanguagePack = languagePack
+    }
 
     resetGame() {
         this.gameIsRunning = false

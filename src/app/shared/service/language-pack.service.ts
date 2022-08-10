@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CurrentGameWords, LetterCorrectness } from '../games/typing-game/model/CurrentGameWords';
-import { LanuagePack } from '../games/typing-game/model/LanguagePack';
+import { LanguagePack } from '../games/typing-game/model/LanguagePack';
 import { WordTranslation } from '../games/typing-game/model/WordTranslation';
 import { LanguagePackResolver } from '../util/TranslationFileResolver';
 
@@ -17,7 +17,7 @@ export class LanguagePackService {
   }
 
   // TODO: should be an ISO2 country code that is an ENUM for safety (LOWERCASE IT)
-  public getLanguagePack(languagePackName: string, targetCountryIso2Code: string): Promise<LanuagePack>  {
+  public getLanguagePack(languagePackName: string, targetCountryIso2Code: string): Promise<LanguagePack>  {
     return new Promise(function(resolve, reject){
       try {  
         LanguagePackResolver.resolve(languagePackName, targetCountryIso2Code).then(languagePack => {
@@ -30,7 +30,7 @@ export class LanguagePackService {
     })
   }
 
-  public getGameWordsGiven(languagePack: LanuagePack, packNumber: number): Promise<CurrentGameWords> {
+  public getGameWordsGiven(languagePack: LanguagePack, packNumber: number): Promise<CurrentGameWords> {
     return new Promise(function(resolve, reject){
       try{
         var wordTranslationsForFirstPack = languagePack.packs[packNumber -1].wordTranslations

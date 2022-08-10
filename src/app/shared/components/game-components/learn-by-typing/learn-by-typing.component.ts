@@ -1,6 +1,7 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { GameSettings } from 'src/app/shared/components/modal/learn-by-typing-settings-modal/GameSettings';
 import { CurrentGameState } from 'src/app/shared/games/typing-game/model/CurrentGameSettings';
+import { LanguagePack } from 'src/app/shared/games/typing-game/model/LanguagePack';
 import { TypingGameStats } from 'src/app/shared/games/typing-game/model/TypingGameStats';
 import { TypingGame } from 'src/app/shared/games/typing-game/TypingGame';
 
@@ -12,31 +13,27 @@ import { SettingsManagerService } from 'src/app/shared/service/settings-manager.
   templateUrl: './learn-by-typing.component.html',
   styleUrls: ['./learn-by-typing.component.scss']
 })
-export class LearnByTypingComponent implements OnInit {
+export class LearnByTypingComponent implements OnInit, OnChanges {
+
+  @Input() gameSettings: GameSettings
+  @Input() languagePack: LanguagePack
 
   @ViewChild('typingbox') typingBox: ElementRef
   // countDownTimer: CountDownTimer = new CountDownTimer()
   typingGame: TypingGame
   currentGameState: CurrentGameState
-  gameSettings: GameSettings
-  
-  switchSize: number = 2000
 
   constructor(
     private languagePackService: LanguagePackService,
-    private settingsManager: SettingsManagerService
   ) {}
 
   ngOnInit(): void {
-    this.currentGameState = new CurrentGameState()
-    
-    this.gameSettings = this.settingsManager.defaultSettings();
-    this.settingsManager.settingsUpdatedEvent.subscribe(settings => {
-      this.gameSettings = settings
-      this.restart()
-    })
-
     this.newGame()
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    console.log(changes)
+    this.restart()
   }
 
   onLetterTyped(event: any) {
@@ -47,19 +44,16 @@ export class LearnByTypingComponent implements OnInit {
   }
 
   newGame() {
-    this.currentGameState.resetGame()
-    this.languagePackService.getLanguagePack(this.gameSettings.languagePackName, this.gameSettings.targetCountryCode).then(pack => {
-      this.currentGameState.currentLanguagePack = pack;
-      this.languagePackService.getGameWordsGiven(pack, this.gameSettings.packNumber).then(wordsForGame=> {
-        this.typingGame = new TypingGame(wordsForGame)
-        this.currentGameState.gameInitialized()
+    this.currentGameState = new CurrentGameState(this.languagePack)
+    this.languagePackService.getGameWordsGiven(this.languagePack, this.gameSettings.packNumber).then(wordsForGame=> {
+      this.currentGameState.resetGame()
+      this.typingGame = new TypingGame(wordsForGame)
+      this.currentGameState.gameInitialized()
 
-        this.typingGame.onComplete.subscribe((typingGameStats: TypingGameStats) => {
-          this.currentGameState.onEndGameEvent(typingGameStats)
-        })
+      this.typingGame.onComplete.subscribe((typingGameStats: TypingGameStats) => {
+        this.currentGameState.onEndGameEvent(typingGameStats)
       })
     })
-
   }
 
   restart() {
@@ -80,5 +74,4 @@ export class LearnByTypingComponent implements OnInit {
         event.target.style.fontWeight = "normal"
     }
   }
-
 }

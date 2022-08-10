@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+// import { GameType } from 'src/app/shared/components/game/GameType';
 import { GameSettings } from 'src/app/shared/components/modal/learn-by-typing-settings-modal/GameSettings';
 import { CurrentGameState } from 'src/app/shared/games/typing-game/model/CurrentGameSettings';
+import { LanguagePackService } from 'src/app/shared/service/language-pack.service';
 import { SettingsManagerService } from 'src/app/shared/service/settings-manager.service';
 
 @Component({
@@ -10,16 +12,9 @@ import { SettingsManagerService } from 'src/app/shared/service/settings-manager.
 })
 export class GamesComponent implements OnInit {
 
-  gameSettings: GameSettings
-  currentGameState: CurrentGameState
-
-  constructor(
-    private settingsManagerService: SettingsManagerService
-  ) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.gameSettings = this.settingsManagerService.defaultSettings()
-    this.currentGameState = new CurrentGameState()
   }
 
 }

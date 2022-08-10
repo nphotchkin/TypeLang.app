@@ -1,8 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { GameSettings } from 'src/app/shared/components/modal/learn-by-typing-settings-modal/GameSettings';
 import { QuestionAndAnswers } from 'src/app/shared/games/multiple-choice-game/model/QuestionAndAnswer';
 import { MultipleChoiceGame } from 'src/app/shared/games/multiple-choice-game/MultipleChoiceGame';
-import { LanuagePack } from 'src/app/shared/games/typing-game/model/LanguagePack';
+import { LanguagePack } from 'src/app/shared/games/typing-game/model/LanguagePack';
 import { WordTranslation } from 'src/app/shared/games/typing-game/model/WordTranslation';
 import { LanguagePackService } from 'src/app/shared/service/language-pack.service';
 import { SettingsManagerService } from 'src/app/shared/service/settings-manager.service';
@@ -12,12 +12,12 @@ import { SettingsManagerService } from 'src/app/shared/service/settings-manager.
   templateUrl: './multiple-choice-game.component.html',
   styleUrls: ['./multiple-choice-game.component.scss']
 })
-export class MultipleChoiceGameComponent implements OnInit {
+export class MultipleChoiceGameComponent implements OnInit, OnChanges  {
 
-  currentLanguagePack: LanuagePack;
+  @Input() gameSettings: GameSettings
+  @Input() languagePack: LanguagePack
+
   multipleChoiceGame: MultipleChoiceGame;
-  gameSettings: GameSettings
-
   questionAndAnswer: QuestionAndAnswers;
   endOfGame: boolean = false
   gameInitalized = false
@@ -28,20 +28,20 @@ export class MultipleChoiceGameComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.initSettings()
     this.newGame()
   }
 
+  ngOnChanges(changes: SimpleChanges) {
+    this.restart()
+  }
+
   newGame() {
-    this.languagePackService.getLanguagePack(this.gameSettings.languagePackName, this.gameSettings.targetCountryCode).then(pack => {
-      this.currentLanguagePack = pack;
-      this.languagePackService.getGameWordsGiven(pack, this.gameSettings.packNumber).then(wordsForGame=> {
-        this.multipleChoiceGame = new MultipleChoiceGame(wordsForGame);
-        this.questionAndAnswer = this.multipleChoiceGame.getCurrentQuestionAndAnswer();
-        this.gameInitalized = true
-        this.multipleChoiceGame.onComplete.subscribe(() => {
-          this.endOfGame = true
-        })
+    this.languagePackService.getGameWordsGiven(this.languagePack, this.gameSettings.packNumber).then(wordsForGame=> {
+      this.multipleChoiceGame = new MultipleChoiceGame(wordsForGame);
+      this.questionAndAnswer = this.multipleChoiceGame.getCurrentQuestionAndAnswer();
+      this.gameInitalized = true
+      this.multipleChoiceGame.onComplete.subscribe(() => {
+        this.endOfGame = true
       })
     })
   }
@@ -59,15 +59,7 @@ export class MultipleChoiceGameComponent implements OnInit {
   }
 
   launchSettingsModal() {
-    this.settingsManager.launchGameSettings(this.currentLanguagePack)
-  }
-
-  private initSettings() {
-    this.gameSettings = this.settingsManager.defaultSettings();
-    this.settingsManager.settingsUpdatedEvent.subscribe(settings => {
-      this.gameSettings = settings
-      this.restart()
-    })
+    this.settingsManager.launchGameSettings(this.languagePack)
   }
 
   private onCorrectWord(event: any, currentWord: string) {
@@ -81,6 +73,5 @@ export class MultipleChoiceGameComponent implements OnInit {
         event.target.style.fontWeight = "normal"
     }
   }
-
 
 }

@@ -24,8 +24,10 @@
                 <b>Type</b>
               </div>
               <bSwitch
-                [switch-off-text]="'⌨️'"
-                [switch-on-text]="'📊 '">
+                (click)="switchGameType()"
+                [switch-off-text]="'📊'"
+                [switch-on-text]="'⌨️'"
+                [(ngModel)]="gameTypeSwitch">
               </bSwitch>
             </div>
             <div class="col">

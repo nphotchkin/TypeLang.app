@@ -18,7 +18,10 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { LearnByTypingSettingsModalComponent } from './components/modal/learn-by-typing-settings-modal/learn-by-typing-settings-modal.component';
-import { GameControlsComponent } from './components/game-controls/game-controls.component';
+import { GameControlsComponent } from './components/game-components/game-controls/game-controls.component';
+import { GameWindowComponent } from './components/game-components/game-window/game-window.component';
+import { MultipleChoiceGameComponent } from './components/game-components/multiple-choice-game/multiple-choice-game.component';
+import { LearnByTypingComponent } from './components/game-components/learn-by-typing/learn-by-typing.component';
 
 @NgModule({
   imports: [
@@ -43,12 +46,16 @@ import { GameControlsComponent } from './components/game-controls/game-controls.
     NavigationComponent,
     FooterComponent,
     LearnByTypingSettingsModalComponent,
-    GameControlsComponent
+    GameControlsComponent,
+    GameWindowComponent, 
+    MultipleChoiceGameComponent,
+    LearnByTypingComponent
   ],
   exports: [
     NavigationComponent,
     FooterComponent,
-    GameControlsComponent
+    GameControlsComponent,
+    GameWindowComponent
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })

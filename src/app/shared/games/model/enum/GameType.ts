@@ -1,0 +1,7 @@
+
+export enum GameType {
+
+    TYPING_GAME = "TYPING_GAME",
+    MULTIPLE_CHOICE_GAME = "MULTIPLE_CHOICE_GAME"
+
+}
