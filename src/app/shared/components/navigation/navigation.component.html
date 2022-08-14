@@ -12,7 +12,7 @@
         style="color:white"
         [routerLink]="['/home']"
       >
-        <span> TypeLang⌨️</span> Learn Languages By Typing.
+        <span>TypeLang⌨️</span> Learn Languages By Typing.
       </a>
       <button
         aria-controls="navigation-index"
@@ -30,11 +30,12 @@
     </div>
     <div
       class="navbar-collapse justify-content-end"
+      [collapse]="isCollapsed"
       id="navigation"
     >
       <div class="navbar-collapse-header">
         <div class="row">
-          <div class="col-6 collapse-brand"><a> TypeLang.app </a></div>
+          <div class="col-6 collapse-brand"><a>TypeLang⌨️</a></div>
           <div class="col-6 collapse-close text-right">
             <button
               aria-controls="navigation-index"
@@ -62,8 +63,8 @@
           </a>
           <div class="dropdown-menu dropdown-with-icons" *dropdownMenu>
             <a
-                class="dropdown-item"
-                [routerLink]="['/games']">
+              class="dropdown-item"
+              [routerLink]="['/games']">
               <i class="tim-icons icon-paper"> </i> Learn By Typing
             </a>
           </div>
@@ -75,7 +76,7 @@
             placement="bottom"
             target="_blank"
             tooltip="Contibute to TypeLang"
-          >
+            >
             <i class="fab fa-github"> </i>
             <p class="d-lg-none d-xl-none">Github</p>
           </a>
