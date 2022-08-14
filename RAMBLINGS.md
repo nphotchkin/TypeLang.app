@@ -1,7 +1,7 @@
 Test stages: 
- - Pre Test training is simple round one and two but your encoraged to go as fast as possible and complete the rounds X number of times to start to build recognition.
+ - Pre Test training is simple typing then multiple choice with everything in order but your encoraged to go as fast as possible and complete the rounds X number of times to start to build recognition.
 
- - Boxing announcer announces round
+ - Boxing announcer announces round - rounds apply logic and switching game types.
    - End of round stats 
  - Round 1 (Easy) - Words appear in the same order learn the pattern so that you start to build recognition.
  - Round 2 (Medium) - Word ordering is shuffled.
