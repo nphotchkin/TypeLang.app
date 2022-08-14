@@ -17,11 +17,18 @@ import { AlertModule } from 'ngx-bootstrap/alert';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { SwiperModule } from "swiper/angular";
+import SwiperCore, { Navigation } from "swiper";
+
 import { LearnByTypingSettingsModalComponent } from './components/modal/learn-by-typing-settings-modal/learn-by-typing-settings-modal.component';
 import { GameControlsComponent } from './components/game-components/game-window/game-controls/game-controls.component';
 import { GameWindowComponent } from './components/game-components/game-window/game-window.component';
 import { MultipleChoiceGameComponent } from './components/game-components/game-window/multiple-choice-game/multiple-choice-game.component';
 import { LearnByTypingComponent } from './components/game-components/game-window/learn-by-typing/learn-by-typing.component';
+import { LanguagePackSelectorComponent } from './components/language-pack-selector/language-pack-selector.component';
+
+// install Swiper modules
+SwiperCore.use([Navigation]);
 
 @NgModule({
   imports: [
@@ -40,7 +47,8 @@ import { LearnByTypingComponent } from './components/game-components/game-window
     AlertModule.forRoot(),
     BsDatepickerModule.forRoot(),
     CarouselModule.forRoot(),
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    SwiperModule
   ],
   declarations: [
     NavigationComponent,
@@ -49,13 +57,15 @@ import { LearnByTypingComponent } from './components/game-components/game-window
     GameControlsComponent,
     GameWindowComponent, 
     MultipleChoiceGameComponent,
-    LearnByTypingComponent
+    LearnByTypingComponent,
+    LanguagePackSelectorComponent
   ],
   exports: [
     NavigationComponent,
     FooterComponent,
     GameControlsComponent,
-    GameWindowComponent
+    GameWindowComponent,
+    LanguagePackSelectorComponent
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })

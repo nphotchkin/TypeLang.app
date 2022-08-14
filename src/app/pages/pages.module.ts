@@ -23,6 +23,9 @@ import { RegisterpageComponent } from "./examples/registerpage/registerpage.comp
 import { LandingpageComponent } from "./examples/landingpage/landingpage.component";
 import { SharedModule } from "../shared/shared.module";
 import { GamesComponent } from './games/games.component';
+import { PublishedLanguagePacksComponent } from './published-language-packs/published-language-packs.component';
+
+
 
 @NgModule({
   imports: [
@@ -49,7 +52,8 @@ import { GamesComponent } from './games/games.component';
     ProfilepageComponent,
     RegisterpageComponent,
     LandingpageComponent,
-    GamesComponent
+    GamesComponent,
+    PublishedLanguagePacksComponent
   ],
   exports: [
     IndexComponent,
