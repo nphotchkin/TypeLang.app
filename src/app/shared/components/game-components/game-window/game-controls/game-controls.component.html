@@ -47,7 +47,7 @@
     </div>
   </div>         
   <app-language-pack-selector 
-    *ngIf="showPackSelction" 
+    *ngIf="showPackSelction && gameSettings != undefined" 
     (packSelected)="packSelected()"
     [gameSettings]="gameSettings">
   </app-language-pack-selector>

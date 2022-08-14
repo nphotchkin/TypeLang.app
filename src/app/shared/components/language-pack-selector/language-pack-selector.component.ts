@@ -15,6 +15,7 @@ export class LanguagePackSelectorComponent implements OnInit {
   constructor(private settingsManager: SettingsManagerService) { }
 
   ngOnInit(): void {
+    console.log(this.gameSettings)
   }
 
   onPackSelected(packNumber: number) {

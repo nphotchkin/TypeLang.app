@@ -1,3 +1,38 @@
 div#label {
     color: white;
 }
+
+.img-container {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.bottom {
+    position: absolute;
+    bottom: 30px;
+    left: 50px;
+    font-size: 15px;
+    color: white;
+    z-index: -0;
+}
+
+.middle {
+    position: absolute;
+    bottom: 60px;
+    left: 50px;
+    font-size: 15px;
+    color: white;
+    z-index: 0;
+    font-weight: bold;
+}
+
+.top {
+    position: absolute;
+    bottom: 90px;
+    left: 50px;
+    font-size: 15px;
+    color: white;
+    z-index: 0;
+}
+
