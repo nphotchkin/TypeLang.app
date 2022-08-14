@@ -39,9 +39,9 @@
     "nouislider": "14.6.3",
     "purify-ts": "^1.2.2",
     "rxjs": "6.6.3",
+    "swiper": "^8.0.6",
     "tslib": "2.0.3",
-    "zone.js": "~0.11.4",
-    "swiper": "^8.0.6"
+    "zone.js": "~0.11.4"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "13.3.8",

@@ -55,7 +55,6 @@ export class LearnByTypingComponent implements OnInit, OnChanges {
   }
 
   restart() {
-    console.log("RESTARTING GAME WITH PACK NUMBER" + this.gameSettings.packNumber)
     setTimeout(()=>{ 
       this.typingBox.nativeElement.focus()
     },0);

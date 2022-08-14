@@ -48,7 +48,7 @@ SwiperCore.use([Navigation]);
     BsDatepickerModule.forRoot(),
     CarouselModule.forRoot(),
     ModalModule.forRoot(),
-    SwiperModule
+    SwiperModule,
   ],
   declarations: [
     NavigationComponent,

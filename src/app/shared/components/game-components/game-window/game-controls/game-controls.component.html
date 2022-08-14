@@ -39,12 +39,15 @@
                 </div>
               </div>
               <div style="margin-top: 6px; margin-left: 20px;">
-                <i (click)="launchSettingsModal()" class="fa-solid fa-gears" style="cursor: pointer; font-size: 25px;"></i>
+                <i (click)="togglePackSelection()" class="fa-solid fa-gears" style="cursor: pointer; font-size: 25px;"></i>
               </div>
             </div>
           </div>
       </div>    
     </div>
   </div>         
-
-  
+  <app-language-pack-selector 
+    *ngIf="showPackSelction" 
+    (packSelected)="packSelected()"
+    [gameSettings]="gameSettings">
+  </app-language-pack-selector>

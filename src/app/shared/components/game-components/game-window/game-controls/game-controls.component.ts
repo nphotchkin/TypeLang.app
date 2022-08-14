@@ -15,6 +15,7 @@ export class GameControlsComponent implements OnInit {
   @Input() gameSettings: GameSettings
 
   gameTypeSwitch: boolean = true;
+  showPackSelction: boolean = false;
 
   constructor(
     private settingsManager: SettingsManagerService,
@@ -37,6 +38,14 @@ export class GameControlsComponent implements OnInit {
     modalRef.content.packSelected.subscribe(number => {
       this.settingsManager.setPackNumber(number)
     });
+  }
+
+  togglePackSelection() {
+    this.showPackSelction = !this.showPackSelction;
+  }
+
+  packSelected() {
+    this.showPackSelction = false
   }
 
   switchGameType() {

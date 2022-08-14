@@ -26,7 +26,6 @@ export class SettingsManagerService {
   }
 
   setGameType(gameType: GameType) {
-    console.log(this)
     this.currentSettings.gameType = gameType;
     this.settingsUpdatedEvent.emit(this.currentSettings);
   }
