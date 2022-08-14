@@ -2,8 +2,8 @@ import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/cor
 import { GameSettings } from 'src/app/shared/components/modal/learn-by-typing-settings-modal/GameSettings';
 import { QuestionAndAnswers } from 'src/app/shared/games/multiple-choice-game/model/QuestionAndAnswer';
 import { MultipleChoiceGame } from 'src/app/shared/games/multiple-choice-game/MultipleChoiceGame';
-import { LanguagePack } from 'src/app/shared/games/typing-game/model/LanguagePack';
-import { WordTranslation } from 'src/app/shared/games/typing-game/model/WordTranslation';
+import { LanguagePack } from 'src/app/shared/games/model/LanguagePack';
+import { WordTranslation } from 'src/app/shared/games/model/WordTranslation';
 import { LanguagePackService } from 'src/app/shared/service/language-pack.service';
 import { SettingsManagerService } from 'src/app/shared/service/settings-manager.service';
 

@@ -1,8 +1,8 @@
 import { unix } from "ngx-bootstrap/chronos/utils/date-getters";
 import { Just, Maybe } from "purify-ts";
 import { Subject } from "rxjs";
-import { CurrentGameWords } from "../typing-game/model/CurrentGameWords";
-import { WordTranslation } from "../typing-game/model/WordTranslation";
+import { CurrentGameWords } from "../model/CurrentGameWords";
+import { WordTranslation } from "../model/WordTranslation";
 import { UniqueMultipleChoiceGenerator } from "./util/UniqueMultipleChoiceGenerator";
 import { QuestionAndAnswers } from "./model/QuestionAndAnswer";
 

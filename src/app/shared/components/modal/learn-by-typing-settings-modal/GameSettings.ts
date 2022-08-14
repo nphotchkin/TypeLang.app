@@ -1,5 +1,5 @@
 import { GameType } from "src/app/shared/games/model/enum/GameType"
-import { LanguagePack } from "src/app/shared/games/typing-game/model/LanguagePack"
+import { LanguagePack } from "src/app/shared/games/model/LanguagePack"
 
 export class GameSettings {
 

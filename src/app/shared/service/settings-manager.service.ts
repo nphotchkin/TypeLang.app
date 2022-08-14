@@ -2,7 +2,7 @@ import { EventEmitter, Injectable } from '@angular/core';
 import { Maybe } from 'purify-ts';
 import { GameSettings as GameSettings } from '../components/modal/learn-by-typing-settings-modal/GameSettings';
 import { GameType } from '../games/model/enum/GameType';
-import { LanguagePack } from '../games/typing-game/model/LanguagePack';
+import { LanguagePack } from '../games/model/LanguagePack';
 import { LanguagePackService } from './language-pack.service';
 import { ModalService } from './modal-launcher.service';
 

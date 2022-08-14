@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { GameType } from 'src/app/shared/games/model/enum/GameType';
-import { LanguagePack } from 'src/app/shared/games/typing-game/model/LanguagePack';
+import { LanguagePack } from 'src/app/shared/games/model/LanguagePack';
 import { ModalService } from 'src/app/shared/service/modal-launcher.service';
 import { SettingsManagerService } from 'src/app/shared/service/settings-manager.service';
 import { GameSettings } from '../../../modal/learn-by-typing-settings-modal/GameSettings';

@@ -1,4 +1,4 @@
-import { WordTranslation } from "../../typing-game/model/WordTranslation";
+import { WordTranslation } from "../../model/WordTranslation";
 
 export class QuestionAndAnswers {
     

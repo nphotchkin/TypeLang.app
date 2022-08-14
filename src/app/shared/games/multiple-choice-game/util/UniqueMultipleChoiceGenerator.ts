@@ -1,5 +1,5 @@
 import { QuestionAndAnswers } from "../model/QuestionAndAnswer";
-import { WordTranslation } from "../../typing-game/model/WordTranslation";
+import { WordTranslation } from "../../model/WordTranslation";
 
 export class UniqueMultipleChoiceGenerator {
 

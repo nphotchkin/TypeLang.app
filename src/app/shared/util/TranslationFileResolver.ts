@@ -1,4 +1,4 @@
-import { LanguagePack } from "../games/typing-game/model/LanguagePack";
+import { LanguagePack } from "../games/model/LanguagePack";
 
 
 export class LanguagePackResolver {

@@ -1,7 +1,7 @@
 import { Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { GameSettings } from 'src/app/shared/components/modal/learn-by-typing-settings-modal/GameSettings';
-import { CurrentGameState } from 'src/app/shared/games/typing-game/model/CurrentGameSettings';
-import { LanguagePack } from 'src/app/shared/games/typing-game/model/LanguagePack';
+import { CurrentGameState } from 'src/app/shared/games/model/CurrentGameSettings';
+import { LanguagePack } from 'src/app/shared/games/model/LanguagePack';
 import { TypingGameStats } from 'src/app/shared/games/typing-game/model/TypingGameStats';
 import { TypingGame } from 'src/app/shared/games/typing-game/TypingGame';
 

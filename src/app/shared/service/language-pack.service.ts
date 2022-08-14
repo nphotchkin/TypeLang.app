@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { CurrentGameWords, LetterCorrectness } from '../games/typing-game/model/CurrentGameWords';
-import { LanguagePack } from '../games/typing-game/model/LanguagePack';
-import { WordTranslation } from '../games/typing-game/model/WordTranslation';
+import { CurrentGameWords, LetterCorrectness } from '../games/model/CurrentGameWords';
+import { LanguagePack } from '../games/model/LanguagePack';
+import { WordTranslation } from '../games/model/WordTranslation';
 import { LanguagePackResolver } from '../util/TranslationFileResolver';
 
 

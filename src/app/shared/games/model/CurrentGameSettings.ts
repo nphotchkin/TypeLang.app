@@ -1,7 +1,7 @@
 import { lazy } from "purify-ts";
 import { LanguagePackService } from "src/app/shared/service/language-pack.service";
 import { LanguagePack } from "./LanguagePack";
-import { TypingGameStats } from "./TypingGameStats";
+import { TypingGameStats } from "../typing-game/model/TypingGameStats";
 
 export class CurrentGameState {
 
