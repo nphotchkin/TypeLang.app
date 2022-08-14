@@ -1,3 +1,9 @@
+Test stages: 
+ - Stage 1 (Easy) - Words appear in the same order learn the pattern so that you start to build recognition.
+ - Stage 2 (Medium) - Word ordering is shuffled.
+ - Stage 3 (Hard) - Word ordering is shuffled & between words it will shuffle the source and target languages.
+    - Loose 3 lives then you get sent back a stage.
+
 
 Ideally i'd like to encorporate this:  
 [The Solar System Theory](https://www.youtube.com/watch?v=95NgtNgmnWA&list=WL&index=2&ab_channel=NathanielDrew)
