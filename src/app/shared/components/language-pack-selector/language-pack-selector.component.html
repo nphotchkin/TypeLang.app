@@ -1,4 +1,7 @@
-<h4>📇 {{ gameSettings.selectedLanguagePack.languagePackName }} </h4>
+
+<div class="row">
+    <h4>📇 {{ gameSettings.selectedLanguagePack.languagePackName }} </h4>
+</div>
 <hr style="background-color:white; width: 100%">
 <swiper
     [slidesPerView]="3" 
@@ -7,18 +10,19 @@
     class="netflix-slider">
     <ng-template  *ngFor="let pack of gameSettings.selectedLanguagePack.packs; let i = index" swiperSlide>
         <div class="img-container">
+
             <img 
             (click)="onPackSelected(pack.packNumber)" 
             src="assets/img/gradient-floor-backdrop.png">
             <div id="label">Pack: {{ pack.packNumber}}</div>
             <div class="top"> 
-                {{ gameSettings.selectedLanguagePack.packs[i].wordTranslations[0].wordInEnglish }}
+                {{ gameSettings.selectedLanguagePack.packs[i].wordTranslations[0].wordInTargetCountryLanguage }}
             </div>
             <div class="middle"> 
-                {{ gameSettings.selectedLanguagePack.packs[i].wordTranslations[1].wordInEnglish }} 
+                {{ gameSettings.selectedLanguagePack.packs[i].wordTranslations[1].wordInTargetCountryLanguage }} 
             </div>
             <div class="bottom"> 
-                {{ gameSettings.selectedLanguagePack.packs[i].wordTranslations[2].wordInEnglish }}...
+                {{ gameSettings.selectedLanguagePack.packs[i].wordTranslations[2].wordInTargetCountryLanguage }}...
             </div>
             <div class="pack-img"> 
                 <img src="https://www.pngkey.com/png/full/333-3336446_second-language-english-as-a-second-language-icon.png">

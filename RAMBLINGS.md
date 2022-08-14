@@ -12,10 +12,7 @@ Test stages:
 Ideally i'd like to encorporate this:  
 [The Solar System Theory](https://www.youtube.com/watch?v=95NgtNgmnWA&list=WL&index=2&ab_channel=NathanielDrew)
 
-And word clouds -something that looks like netflix or calm with something that looks like this: https://www.cssscript.com/tag-word-cloud/
-
-
-Pack size = 10 (I heard somewhere once that you can't fit more than 10 things in your head at once).
+Pack size = 20
 
 There appears to be two types of learning `games` drilling words is the main aim of this. Then there is scenario based (grammar etc.) this is difficult to generalize as it varies by language. 
 
