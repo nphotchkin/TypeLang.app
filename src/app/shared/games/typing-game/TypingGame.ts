@@ -59,10 +59,6 @@ export class TypingGame {
         }).length
         if (totalMissingOrInCorrect == 0) {
             if (this.currentWordIndex < this.gameWords.words.length) {
-                console.log(this.currentWordIndex)
-                console.log(this.gameWords.words.length)
-                console.log("CORRECT WORD")
-          
                 this.currentWordIndex ++
                 if (this.currentWordIndex == this.gameWords.words.length) {
                     this.onComplete.next(new TypingGameStats(this.currentGameMetrics, this.timer.totalTimeElapsedSeconds))

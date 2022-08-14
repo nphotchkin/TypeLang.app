@@ -1,18 +1,15 @@
 <div *ngIf="initalized"> 
     <app-game-controls 
-        [gameSettings]="gameSettings" 
-        [currentLanguagePack]="languagePack">
+        [gameSettings]="gameSettings" >
     </app-game-controls>
     <div *ngIf="gameSettings.gameType == 'TYPING_GAME'">
         <app-learn-by-typing 
-            [gameSettings]="gameSettings"
-            [languagePack]="languagePack">
+            [gameSettings]="gameSettings">
         </app-learn-by-typing>
     </div>
     <div *ngIf="gameSettings.gameType == 'MULTIPLE_CHOICE_GAME'">
         <app-multiple-choice-game 
-            [gameSettings]="gameSettings"
-            [languagePack]="languagePack">
+            [gameSettings]="gameSettings">
         </app-multiple-choice-game>
     </div>
 </div>

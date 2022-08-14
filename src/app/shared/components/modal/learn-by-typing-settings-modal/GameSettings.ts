@@ -1,20 +1,23 @@
 import { GameType } from "src/app/shared/games/model/enum/GameType"
+import { LanguagePack } from "src/app/shared/games/typing-game/model/LanguagePack"
 
 export class GameSettings {
 
+    selectedLanguagePack: LanguagePack
     gameType: GameType = GameType.TYPING_GAME
-    languagePackName: string
     packNumber: number
     targetCountryCode: string
 
-    constructor(languagePackName: string, packNumber: number, targetCountryCode: string) {
-        this.languagePackName = languagePackName
+    constructor(
+        selectedLanguagePack: LanguagePack, 
+        packNumber: number, 
+        targetCountryCode: string, 
+        gameType: GameType
+    ) {
+        this.selectedLanguagePack = selectedLanguagePack
         this.packNumber = packNumber
         this.targetCountryCode = targetCountryCode
-    }
-
-    static ofDefault(): GameSettings {
-        return new GameSettings('top-200-words', 1, 'es')
+        this.gameType = gameType
     }
 
 }

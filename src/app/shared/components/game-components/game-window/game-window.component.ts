@@ -15,35 +15,29 @@ import { SettingsManagerService } from 'src/app/shared/service/settings-manager.
 export class GameWindowComponent implements OnInit {
 
   initalized: boolean = false
-  gameSettings: GameSettings = this.settingsManager.defaultSettings()
-  languagePack: LanguagePack 
+  gameSettings: GameSettings 
 
   constructor(
-    private settingsManager: SettingsManagerService, 
-    private languagePackService: LanguagePackService
+    private settingsManager: SettingsManagerService
   ) { }
 
   ngOnInit(): void {
-    this.getDefaultLanguagePack()
+    this.settingsManager.defaultSettings().then(settings => {
+      this.gameSettings = settings
+      this.initalized = true
+    })  
     this.listenForSettingChanges()
   }
 
   listenForSettingChanges() {
     this.settingsManager.settingsUpdatedEvent.subscribe(settings => {
-      console.log("UPDATED SETTINGS")
-      console.log(this.gameSettings)
-      this.gameSettings = settings
+      this.gameSettings = new GameSettings(
+        settings.selectedLanguagePack,
+        settings.packNumber, 
+        settings.targetCountryCode,
+        settings.gameType
+      )
     })
   }
-  
-  getDefaultLanguagePack() {
-    this.languagePackService.getLanguagePack(
-        this.gameSettings.languagePackName, 
-        this.gameSettings.targetCountryCode
-    ).then(pack => {
-      this.languagePack = pack
-      this.initalized = true
-    });
-  }
-  
+
 }

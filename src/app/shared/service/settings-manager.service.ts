@@ -3,6 +3,7 @@ import { Maybe } from 'purify-ts';
 import { GameSettings as GameSettings } from '../components/modal/learn-by-typing-settings-modal/GameSettings';
 import { GameType } from '../games/model/enum/GameType';
 import { LanguagePack } from '../games/typing-game/model/LanguagePack';
+import { LanguagePackService } from './language-pack.service';
 import { ModalService } from './modal-launcher.service';
 
 @Injectable({
@@ -11,31 +12,32 @@ import { ModalService } from './modal-launcher.service';
 export class SettingsManagerService {
 
   public settingsUpdatedEvent: EventEmitter<GameSettings> = new EventEmitter();
-  private currentSettings: GameSettings = this.defaultSettings();
+  private currentSettings: GameSettings = null;
 
-  constructor(private modalService: ModalService) {}
-
-  launchGameSettings(languagePack: LanguagePack) {
-    var modalRef = this.modalService.launchGameSettingsModal(languagePack);
-    
-    modalRef.content.event.subscribe(settings => {
-      settings.ifJust(updatedSettings => {
-        this.currentSettings = updatedSettings
-        this.settingsUpdatedEvent.emit(updatedSettings);
-      })
-    });
+  constructor(
+    private languagePackService: LanguagePackService
+  ) {
+    this.defaultSettings()
   }
 
-  setGameType(gameType: GameType) {
-    this.currentSettings.gameType = gameType;
-    console.log("EMIT")
-    console.log(this.currentSettings)
+  setPackNumber(number: number) {
+    this.currentSettings.packNumber = number
     this.settingsUpdatedEvent.emit(this.currentSettings);
   }
 
-  defaultSettings(): GameSettings {
-    return GameSettings.ofDefault()
+  setGameType(gameType: GameType) {
+    console.log(this)
+    this.currentSettings.gameType = gameType;
+    this.settingsUpdatedEvent.emit(this.currentSettings);
   }
 
+  async defaultSettings(): Promise<GameSettings> {
+    var defaultLanguagePack = await this.languagePackService.getLanguagePack(
+      'top-200-words', 
+      'es'
+    );
+    this.currentSettings = new GameSettings(defaultLanguagePack, 1, 'es', GameType.TYPING_GAME);
+    return this.currentSettings
+  }
 
 }

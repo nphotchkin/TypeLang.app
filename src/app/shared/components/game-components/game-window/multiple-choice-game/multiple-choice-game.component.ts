@@ -15,7 +15,6 @@ import { SettingsManagerService } from 'src/app/shared/service/settings-manager.
 export class MultipleChoiceGameComponent implements OnInit, OnChanges  {
 
   @Input() gameSettings: GameSettings
-  @Input() languagePack: LanguagePack
 
   multipleChoiceGame: MultipleChoiceGame;
   questionAndAnswer: QuestionAndAnswers;
@@ -23,8 +22,7 @@ export class MultipleChoiceGameComponent implements OnInit, OnChanges  {
   gameInitalized = false
 
   constructor(
-    private languagePackService: LanguagePackService,
-    private settingsManager: SettingsManagerService
+    private languagePackService: LanguagePackService
   ) { }
 
   ngOnInit(): void {
@@ -36,7 +34,7 @@ export class MultipleChoiceGameComponent implements OnInit, OnChanges  {
   }
 
   newGame() {
-    this.languagePackService.getGameWordsGiven(this.languagePack, this.gameSettings.packNumber).then(wordsForGame=> {
+    this.languagePackService.getGameWordsGiven(this.gameSettings.selectedLanguagePack, this.gameSettings.packNumber).then(wordsForGame=> {
       this.multipleChoiceGame = new MultipleChoiceGame(wordsForGame);
       this.questionAndAnswer = this.multipleChoiceGame.getCurrentQuestionAndAnswer();
       this.gameInitalized = true
@@ -56,10 +54,6 @@ export class MultipleChoiceGameComponent implements OnInit, OnChanges  {
   restart() {
     this.newGame()
     this.endOfGame = false
-  }
-
-  launchSettingsModal() {
-    this.settingsManager.launchGameSettings(this.languagePack)
   }
 
   private onCorrectWord(event: any, currentWord: string) {

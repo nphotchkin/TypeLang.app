@@ -16,7 +16,6 @@ import { SettingsManagerService } from 'src/app/shared/service/settings-manager.
 export class LearnByTypingComponent implements OnInit, OnChanges {
 
   @Input() gameSettings: GameSettings
-  @Input() languagePack: LanguagePack
 
   @ViewChild('typingbox') typingBox: ElementRef
   // countDownTimer: CountDownTimer = new CountDownTimer()
@@ -32,7 +31,6 @@ export class LearnByTypingComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log(changes)
     this.restart()
   }
 
@@ -44,8 +42,8 @@ export class LearnByTypingComponent implements OnInit, OnChanges {
   }
 
   newGame() {
-    this.currentGameState = new CurrentGameState(this.languagePack)
-    this.languagePackService.getGameWordsGiven(this.languagePack, this.gameSettings.packNumber).then(wordsForGame=> {
+    this.currentGameState = new CurrentGameState(this.gameSettings.selectedLanguagePack)
+    this.languagePackService.getGameWordsGiven(this.gameSettings.selectedLanguagePack, this.gameSettings.packNumber).then(wordsForGame=> {
       this.currentGameState.resetGame()
       this.typingGame = new TypingGame(wordsForGame)
       this.currentGameState.gameInitialized()
@@ -57,6 +55,7 @@ export class LearnByTypingComponent implements OnInit, OnChanges {
   }
 
   restart() {
+    console.log("RESTARTING GAME WITH PACK NUMBER" + this.gameSettings.packNumber)
     setTimeout(()=>{ 
       this.typingBox.nativeElement.focus()
     },0);

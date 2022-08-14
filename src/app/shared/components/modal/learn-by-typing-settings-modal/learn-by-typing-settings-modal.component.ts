@@ -1,7 +1,5 @@
-import { Component, EventEmitter, Input, OnDestroy, OnInit } from '@angular/core';
-import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { Just, Maybe, Nothing } from 'purify-ts';
-import { LanguagePack } from 'src/app/shared/games/typing-game/model/LanguagePack';
+import { Component, EventEmitter, OnInit } from '@angular/core';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 import { GameSettings } from './GameSettings';
 
 @Component({
@@ -11,30 +9,24 @@ import { GameSettings } from './GameSettings';
 })
 export class LearnByTypingSettingsModalComponent implements OnInit {
 
-  languagePack: LanguagePack;
-
+  gameSettings: GameSettings
   selectedPack: any = "1";
 
-  public event: EventEmitter<Maybe<GameSettings>> = new EventEmitter();
+  public packSelected: EventEmitter<number> = new EventEmitter();
 
-  constructor(private modalRef: BsModalRef) { }
+  constructor(
+    private modalRef: BsModalRef
+  ) { }
 
   ngOnInit(): void {
   }
 
   save() {
-    this.event.emit( 
-      Just(
-        new GameSettings(this.languagePack.languagePackName, parseInt(this.selectedPack), 'es')
-      )
-    );
+    this.packSelected.emit(Number(this.selectedPack))
     this.modalRef.hide();
   }
 
   closeModal(){
-    this.event.emit( 
-      Nothing
-    );
     this.modalRef.hide();
   }
 

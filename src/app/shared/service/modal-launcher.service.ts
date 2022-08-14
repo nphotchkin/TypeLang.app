@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BsModalRef, BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
+import { GameSettings } from '../components/modal/learn-by-typing-settings-modal/GameSettings';
 import { LearnByTypingSettingsModalComponent } from '../components/modal/learn-by-typing-settings-modal/learn-by-typing-settings-modal.component';
-import { LanguagePack } from '../games/typing-game/model/LanguagePack';
 
 @Injectable({
   providedIn: 'root'
@@ -14,9 +14,9 @@ export class ModalService {
    * Launch a settings modal directly, use settings manager instead.
    * @see SettingsManagerService
    */
-  public launchGameSettingsModal(languagePack: LanguagePack): BsModalRef {
+  public launchGameSettingsModal(gameSettings: GameSettings): BsModalRef {
     const modalData = {
-      languagePack: languagePack
+      gameSettings: gameSettings
     };
     return this.modalService.show(LearnByTypingSettingsModalComponent, 
       {
