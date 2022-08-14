@@ -8,8 +8,6 @@ import { ProfilepageComponent } from "./pages/examples/profilepage/profilepage.c
 import { RegisterpageComponent } from "./pages/examples/registerpage/registerpage.component";
 import { LandingpageComponent } from "./pages/examples/landingpage/landingpage.component";
 import { GamesComponent } from "./pages/games/games.component";
-import { combineLatest } from "rxjs";
-import { PublishedLanguagePacksComponent } from "./pages/published-language-packs/published-language-packs.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "home", pathMatch: "full" },
@@ -18,7 +16,6 @@ const routes: Routes = [
   { path: "register", component: RegisterpageComponent },
   { path: "landing", component: LandingpageComponent },
   { path: 'games', component: GamesComponent },
-  { path: 'language-packs', component: PublishedLanguagePacksComponent },
   { path: '**', redirectTo: 'home', pathMatch: 'full' }
 ];
 
