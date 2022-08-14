@@ -1,8 +1,8 @@
 <div class="card">
     <div class="row">
-      <div class="col-6">
+      <div class="col-8">
         <div class="float-left m-4">
-          <div style="margin-left: 25px;">
+          <div style="margin-left: 25px; margin-top: 20px;">
             <div class="row">
               <h5>
                 <span class="half-size">🗂️<b>{{ gameSettings.selectedLanguagePack.languagePackName }}</b></span>
@@ -16,31 +16,33 @@
           </div>
         </div>
       </div>
-      <div class="col-6">
+      <div class="col-4">
         <div class="float-right m-4">
-          <div class="row">
-            <div class="col">
-              <div style="font-size: 10px; margin-bottom: 5px; margin-left: 15px; margin-right: 10px" class="row">
-                <b>Type</b>
+            <div class="row">
+              <div class="col-12">
+                <div style="font-size: 10px; margin-left: 10px; margin-bottom: 5px;">
+                  <b>Type</b>
+                </div>
               </div>
               <bSwitch
                 (click)="switchGameType()"
-                [switch-off-text]="'📊'"
+                [switch-off-text]="'🗳'"
                 [switch-on-text]="'⌨️'"
                 [switch-size]="'large'"
                 [(ngModel)]="gameTypeSwitch">
               </bSwitch>
             </div>
-            <div class="col">
-              <div style="font-size: 10px; margin-bottom: 5px; margin-left: 30px; margin-right: 10px" class="row">
-                <b>Settings</b>
+            <div class="row">
+              <div class="col-12">
+                <div style="font-size: 10px">
+                  <b>Settings</b>
+                </div>
               </div>
-              <div style="margin-left: 27px">
-                <i (click)="launchSettingsModal()" class="fa-solid fa-gears" style="cursor: pointer"></i>
+              <div style="margin-top: 6px; margin-left: 20px;">
+                <i (click)="launchSettingsModal()" class="fa-solid fa-gears" style="cursor: pointer; font-size: 25px;"></i>
               </div>
             </div>
           </div>
-        </div>
       </div>    
     </div>
   </div>         
