@@ -32,19 +32,3 @@ The purpose of this project is primarily to develop a POC so I can learn Spanish
  - [UI Kit](https://demos.creative-tim.com/blk-design-system-angular/#/documentation/grid)
  - [Swiper](https://swiperjs.com/angular)
  
-
----
-<br>
-<br>
-<br>
-<br>
-<br>
-
-### This project is closed currently closed for direct contribution but feel free to fork it / steal whatever you want. 
-# Want to Contribute
-
-Refer to [CONTRIBUTING.md](./CONTRIBUTING.md).
-
-# Code of Conduct
-
-Before contributing to this repository, please read the [code of conduct](./CODE_OF_CONDUCT.md).
