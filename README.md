@@ -10,7 +10,7 @@
 <br/>
 <br/>
 
-[TypeLang](https://typelang-app.web.app/) is a straight forward language learning app for Typist's - Open Source & Always Free
+[TypeLang](https://typelang-app.web.app/) is a straight forward language learning app for Typist's
 
 <img src="https://user-images.githubusercontent.com/15834648/175621591-2b585172-99a2-4c36-9dd6-3eb1cee8e815.png" 
  alt="banner" 
