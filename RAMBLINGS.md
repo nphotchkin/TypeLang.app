@@ -1,6 +1,6 @@
 Test stages: 
  - Pre Test training is simple typing then multiple choice with everything in order but your encoraged to go as fast as possible and complete the rounds X number of times to start to build recognition.
-
+ - 
  - Boxing announcer announces round - rounds apply logic and switching game types.
    - End of round stats 
  - Round 1 (Easy) - Words appear in the same order learn the pattern so that you start to build recognition.
@@ -8,6 +8,11 @@ Test stages:
  - Round 3 (Hard) - Word ordering is shuffled & between words it will shuffle the source and target languages.
     - Loose 3 lives then you get sent back a stage.
  - Final Round - Given source language type in the target.
+
+Sound Clips:
+ - https://artlist.io/sfx/pack/4412/sports-announcer-
+ - https://www.youtube.com/watch?v=TvvTacquttk&ab_channel=RyanLloyd
+
 
 Ideally i'd like to encorporate this:  
 [The Solar System Theory](https://www.youtube.com/watch?v=95NgtNgmnWA&list=WL&index=2&ab_channel=NathanielDrew)
