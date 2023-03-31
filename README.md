@@ -16,13 +16,9 @@
  alt="banner" 
  width="200"/>
 
-# Development Status
-### PROOF OF CONCEPT
- 
-<br/> 
-
-# Note Well
-The purpose of this project is primarily to develop a POC so I can learn Spanish the lazy mans way, i'd like to use this project to improve my frontend development skills (Clean Code / Design Patterns) but may abandon this idea to just `Make it work`.
+## N.B.
+Don't have time to take this any further, just a proof of concept. 
+I may extend the `language packs` for spanish only, as I'm prioritizing other projects.
 
 
 # Dependencies
